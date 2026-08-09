@@ -1,0 +1,10 @@
+{{- $w := .w -}}
+{{- $solid := .solid -}}
+{{- $ondesk := .ondesk -}}
+{{- $sp := $w.spine -}}
+{{- $width := cond $solid $sp.w (sub $sp.w 0.3) -}}
+{{- $height := cond $solid $sp.h (sub $sp.h 0.6) -}}
+<button type="button"
+        class="spine{{ if $solid }}{{ if $w.recension }} rec{{ end }}{{ else }} ghost{{ end }}{{ if $ondesk }} ondesk{{ end }}"
+        data-id="{{ $w.id }}" data-tip="work" draggable="true" title="{{ $w.title }}"
+        style="--w:{{ $width }}rem;--h:{{ $height }}rem;{{ if $solid }}--c:{{ $sp.color }};{{ end }}">{{ $sp.label }}</button>

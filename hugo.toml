@@ -1,0 +1,46 @@
+# 小书桌 —— 站点配置
+# baseURL 由 GitHub Actions 在构建时用 --baseURL 覆盖，这里写的只在本地 hugo server 时生效。
+baseURL = 'https://example.org/'
+languageCode = 'zh-CN'
+defaultContentLanguage = 'zh'
+title = '小书桌'
+
+# 不用分类法；顺手也生成 robots.txt
+disableKinds = ['taxonomy', 'term']
+enableRobotsTXT = true
+
+# 允许在模板与内容里写原始 HTML（书目里有 <i> 之类）
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  tagline_1 = '一张摊开的桌子，上面铺满<em>工作中</em>的稿纸；做完的，站到尽头的书架上去。'
+  tagline_2 = '灵魂、星辰与深度心理学的中译。多数还没做完，进度都写在纸上。'
+  # 桌角的工具（术语表、凡例）
+  [[params.tools]]
+    label = '诸存在重新融合论 · 术语对照表'
+    href  = 'translation/glossary-reintegration.html'
+  [[params.tools]]
+    label = '行星之内 · 术语对照表'
+    href  = 'translation/glossary-planets.html'
+  [[params.tools]]
+    label = '天宫图与公共领域 · 全书术语表'
+    href  = 'translation/horoscopes/#sec-glossary'
+  [[params.tools]]
+    label = '基督教与焦虑 · 德中术语表'
+    href  = 'translation/pfister-angst.html#glossary'
+  [[params.tools]]
+    label = '凡例：译名取舍与标注体例'
+    href  = 'fanli/'
+  [[params.tools]]
+    label = '精校四类注释的分法'
+    href  = 'fanli/#zhushi'
+
+# 站点尚未公开索引前，先整站拦爬虫。想让搜索引擎收录时，把下面这段删掉即可。
+[params.privacy]
+  noindex = true
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.6
+  filename = 'sitemap.xml'

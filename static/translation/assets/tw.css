@@ -1,0 +1,346 @@
+/* ==========================================================================
+   小森林 · 翻译系列 — 统一样式表  (translation series, unified stylesheet)
+   All translation documents under /translation/ share this file so the whole
+   series reads as one edition. Per-document <style> blocks were removed;
+   the original class vocabulary of each document is preserved below.
+   ========================================================================== */
+
+:root{
+  --paper:#faf7f1;
+  --card:#fffdf8;
+  --ink:#23201c;
+  --soft:#5c554b;
+  --faint:#938a7c;
+  --line:#e4dccb;
+  --rule:#cfc5b0;
+  --accent:#6d5b97;
+  --accent-d:#4b3d70;
+  --accent-2:#8a6d1f;
+  --mark:#f3eede;
+  --en:#7c756a;
+  --maxw:840px;
+
+  --serif:"FZYaSong","Noto Serif SC","Source Han Serif SC","Songti SC",
+          "Noto Serif CJK SC",Georgia,"Times New Roman",serif;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",
+         system-ui,-apple-system,sans-serif;
+}
+
+/* The site's own 方正雅宋. Restricted to CJK + CJK punctuation via
+   unicode-range: the face has no Latin accented glyphs, and letting it claim
+   Latin caused per-glyph fallback (visible as "Martin è s de Pasqually").
+   Latin now always resolves to the Georgia/Times branch of --serif. */
+@font-face{
+  font-family:"FZYaSong";
+  src:url("../../fonts/fangzheng_yasong.woff2") format("woff2"),
+      url("../../fonts/fangzheng_yasong.woff") format("woff");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+2E80-2EFF, U+3000-303F, U+3040-30FF, U+3200-4DBF,
+                U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF,
+                U+20000-2FA1F;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%; scroll-padding-top:58px}
+/* keep the sticky breadcrumb bar from covering an anchor target */
+[id]{scroll-margin-top:58px}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* --------------------------------------------------------------- top bar */
+.tw-bar{
+  position:sticky; top:0; z-index:20;
+  background:rgba(250,247,241,.94);
+  backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid var(--line);
+  font-family:var(--sans);
+  font-size:13.5px;
+  letter-spacing:.02em;
+}
+.tw-bar .tw-bar-in{
+  max-width:var(--maxw); margin:0 auto;
+  padding:10px 22px;
+  display:flex; align-items:center; gap:9px;
+}
+.tw-bar a{color:var(--soft); text-decoration:none; border-bottom:1px solid transparent}
+.tw-bar a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+.tw-bar .tw-home{font-weight:600; color:var(--accent-d)}
+.tw-bar .tw-sep{color:var(--faint)}
+.tw-bar .tw-spacer{flex:1}
+.tw-bar .tw-top{font-size:12.5px; color:var(--faint)}
+
+/* ---------------------------------------------------------------- canvas */
+.wrap{max-width:var(--maxw); margin:0 auto; padding:52px 22px 120px}
+
+/* --------------------------------------------------------------- headers */
+header.doc,header.title{
+  border-bottom:1px solid var(--rule);
+  padding-bottom:26px; margin-bottom:8px;
+}
+header.doc h1,header.title h1{
+  font-size:31px; line-height:1.35; margin:0 0 14px;
+  color:var(--accent-d); font-weight:700; letter-spacing:.01em;
+}
+.kicker{
+  font-family:var(--sans); letter-spacing:.18em; font-size:12px;
+  color:var(--accent); text-transform:uppercase; margin:0 0 12px;
+}
+.meta,header.title .meta{color:var(--soft); font-size:14.5px; line-height:1.8; margin:0}
+.meta b{color:var(--ink); font-weight:600}
+header.title .de{
+  color:var(--faint); font-size:13.5px; letter-spacing:.05em; font-style:italic;
+}
+
+/* title page (bilingual works) */
+header.titlepage{
+  text-align:center; padding:36px 0 26px;
+  border-bottom:2px solid var(--accent); margin-bottom:26px;
+}
+.book-en{font-size:23px; font-weight:700; letter-spacing:.2px; color:var(--accent-d)}
+.book-en-sub{font-size:14.5px; color:var(--en); margin-top:5px; font-style:italic}
+.book-zh{font-size:27px; font-weight:700; margin-top:18px; color:var(--accent-d)}
+.book-zh-sub{font-size:16px; color:var(--soft); margin-top:5px}
+.author{margin-top:18px; font-size:15px; color:var(--ink)}
+.edition{margin-top:6px; font-size:12.5px; color:var(--faint); font-style:italic}
+
+/* ----------------------------------------------------------- note panels */
+.note,.transnote,.progress,.footnotes{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent);
+  border-radius:0 10px 10px 0;
+  padding:15px 20px; margin:24px 0;
+  font-family:var(--sans);
+  font-size:14px; line-height:1.85; color:var(--soft);
+}
+.note b,.transnote h4,.progress h4{
+  color:var(--accent-d); font-weight:700;
+}
+.transnote h4,.progress h4{margin:0 0 7px; font-size:14px}
+.progress{border-left-color:var(--accent-2)}
+.progress h4{color:var(--accent-2)}
+.note p,.transnote p,.progress p{margin:7px 0}
+p.note{ /* inline note paragraph inside a bilingual work */
+  background:var(--card); border:1px solid var(--line);
+  border-left:4px solid var(--accent-2); border-radius:0 10px 10px 0;
+  padding:13px 18px; font-family:var(--sans); font-size:13.5px; color:var(--soft);
+}
+
+/* ------------------------------------------------------- table of contents */
+.toc,nav.toc{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:20px 24px; margin:30px 0 34px;
+}
+.toc .toctitle,nav.toc h2{
+  display:block; font-family:var(--sans);
+  font-weight:700; color:var(--accent-d);
+  margin:0 0 10px; font-size:14.5px; letter-spacing:.06em;
+  border:0; padding:0;
+}
+.toc ul,nav.toc ul{list-style:none; margin:0; padding-left:0}
+.toc>ul>li{margin:7px 0}
+.toc ul ul{padding-left:18px; margin:4px 0}
+.toc a,nav.toc a{
+  color:var(--soft); text-decoration:none; font-size:14.5px;
+  display:inline-block; border-bottom:1px solid transparent;
+}
+.toc>ul>li>a{color:var(--accent-d); font-weight:600; font-size:15px}
+.toc a:hover,nav.toc a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+nav.toc li{margin:1px 0}
+nav.toc a{display:block; padding:3px 5px; border-radius:4px; border:0}
+nav.toc a:hover{background:var(--mark); color:var(--accent-d)}
+nav.toc .tz{font-size:14px}
+nav.toc .te{font-family:var(--sans); font-size:11px; color:var(--faint); font-style:italic; margin-left:8px}
+nav.toc li.t1{margin-top:12px; font-weight:700}
+nav.toc li.t1 .tz{font-size:15.5px; color:var(--accent-d)}
+nav.toc li.t2 .tz{font-weight:600}
+nav.toc li.t3{padding-left:18px}
+nav.toc li.t3 .te{display:none}
+
+ul.origtoc{
+  list-style:none; padding-left:0; margin:14px 0;
+  font-family:var(--sans); font-size:13.5px; color:var(--soft);
+}
+ul.origtoc li{margin:5px 0; padding-left:14px; position:relative}
+ul.origtoc li::before{content:"·"; position:absolute; left:0; color:var(--faint)}
+ul.origtoc .en{color:var(--en); font-style:italic}
+ul.origtoc .zh{color:var(--ink)}
+
+/* -------------------------------------------------------------- headings */
+h2,h2.section{
+  font-size:23px; margin:56px 0 6px; padding-top:20px;
+  border-top:2px solid var(--line);
+  color:var(--accent-d); font-weight:700; line-height:1.4;
+}
+h3,h3.sub{font-size:18.5px; margin:36px 0 6px; color:var(--ink); font-weight:600; line-height:1.5}
+h4{font-size:16px; margin:26px 0 4px; color:var(--accent-d); font-weight:600}
+h2+*,h3+*,h4+*{margin-top:10px}
+.tw-partial{
+  font-family:var(--sans); font-size:12.5px; font-weight:400;
+  color:var(--accent-2); margin-left:8px; letter-spacing:.04em;
+}
+
+/* ----------------------------------------------------------------- prose */
+p{margin:15px 0; text-align:justify; text-justify:inter-ideograph}
+ul,ol{margin:13px 0; padding-left:24px}
+li{margin:8px 0}
+li>ul,li>ol{margin:6px 0}
+strong{color:var(--accent-d); font-weight:600}
+em{font-style:normal; background:var(--mark); padding:0 .25em; border-radius:3px; color:#6a5a2e}
+a{color:var(--accent); text-decoration:none; border-bottom:1px solid rgba(109,91,151,.35)}
+a:hover{border-bottom-color:var(--accent)}
+hr{border:none; border-top:1px dashed var(--line); margin:42px 0}
+code{background:var(--mark); padding:.08em .35em; border-radius:4px; font-size:.92em; font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+sup{color:var(--accent); font-size:.68em; padding-left:1px; vertical-align:super; line-height:0}
+
+blockquote{
+  margin:20px 0; padding:12px 18px; background:var(--card);
+  border-left:4px solid var(--accent); border-radius:0 10px 10px 0;
+  color:var(--soft); font-size:15.5px;
+}
+blockquote p{margin:6px 0}
+
+.epigraph{
+  font-style:italic; color:var(--soft); text-align:right;
+  margin:18px 0 32px; font-size:15.5px; line-height:1.75;
+}
+.pagemark{
+  font-family:var(--sans); color:#b8ac95; font-size:11.5px; font-style:italic;
+  margin:24px 0 6px; border-top:1px dotted var(--line); padding-top:6px;
+  text-align:left;
+}
+.footnotes{
+  border-left:0; border-radius:10px; margin-top:42px;
+  font-size:13.5px; line-height:1.75;
+}
+.footnotes p{margin:0 0 8px}
+
+/* ------------------------------------------- bilingual paragraph pairing */
+.pair{
+  margin:20px 0; padding-left:16px;
+  border-left:2px solid var(--line);
+}
+.pair:hover{border-left-color:var(--accent)}
+p.en{
+  margin:0 0 7px; color:var(--en); font-size:14.5px; line-height:1.7;
+  font-family:Georgia,"Times New Roman",serif; font-style:italic;
+}
+p.zh{margin:0; font-size:17px; line-height:1.85}
+
+section.part{
+  text-align:center; margin:60px 0 12px; padding-top:26px;
+  border-top:2px solid var(--line);
+}
+section.part .head-en{font-family:Georgia,serif; font-size:14.5px; color:var(--en); font-style:italic; letter-spacing:.08em}
+section.part .head-zh{font-size:24px; font-weight:700; color:var(--accent-d); margin-top:3px}
+
+section.subpart{margin:34px 0 8px}
+section.subpart .head-en{font-family:Georgia,serif; font-size:13px; color:var(--en); font-style:italic}
+section.subpart .head-zh{font-size:18.5px; font-weight:700; color:var(--ink)}
+
+.sechead{margin:32px 0 6px; padding-bottom:5px; border-bottom:1px dashed var(--line)}
+.sechead .sec-en{font-family:Georgia,serif; font-size:12.5px; color:var(--en); font-style:italic}
+.sechead .sec-zh{font-size:16.5px; font-weight:700; color:var(--accent-d); margin-top:2px}
+
+.subhead{margin:20px 0 4px}
+.subhead .sub-en{font-family:Georgia,serif; font-size:12.5px; color:var(--en); font-style:italic; font-weight:600}
+.subhead .sub-zh{font-size:15.5px; font-weight:700; color:var(--ink)}
+
+/* ---------------------------------------------------- terminology tables */
+.cat,h3.gloss-title{
+  font-size:19px; color:var(--accent-d); margin:44px 0 6px; font-weight:700;
+}
+table,table.gloss{
+  width:100%; border-collapse:collapse; margin:18px 0 10px;
+  font-family:var(--sans); font-size:14px;
+  background:var(--card);
+}
+caption{
+  caption-side:top; text-align:left; color:var(--soft);
+  font-family:var(--sans); font-size:13.5px; margin-bottom:8px; line-height:1.7;
+}
+th,td{border:1px solid var(--line); padding:9px 12px; vertical-align:top; text-align:left}
+thead th{
+  background:var(--accent); color:#fff; font-weight:600;
+  position:sticky; top:41px; z-index:5;
+}
+tbody tr:nth-child(even){background:#f7f2e8}
+tbody tr:hover{background:var(--mark)}
+td.de,td.en{color:var(--en); font-style:italic}
+td.zh{font-weight:600; color:var(--ink)}
+td.rem,td.note{color:var(--soft); font-size:13px; line-height:1.65}
+td.tick{text-align:center; color:var(--accent); font-weight:600}
+
+/* --------------------------------------------------- rights / use notice */
+.tw-rights{
+  margin:52px 0 0; padding:16px 20px;
+  background:#f7f2e8; border:1px solid var(--line); border-radius:10px;
+  font-family:var(--sans); font-size:12.5px; line-height:1.85; color:var(--soft);
+}
+.tw-rights b{color:var(--accent-d); font-weight:700}
+.tw-rights .tw-orig{
+  display:block; margin-top:7px; color:var(--faint); font-size:12px;
+  font-family:Georgia,"Times New Roman",serif; font-style:italic;
+}
+
+/* ---------------------------------------------------------------- footer */
+footer,footer.doc{
+  margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);
+  color:var(--faint); font-family:var(--sans); font-size:12.5px;
+  line-height:1.8; text-align:center;
+}
+.tw-foot-nav{margin-top:14px}
+.tw-foot-nav a{
+  color:var(--soft); font-size:13px; text-decoration:none;
+  border-bottom:1px solid var(--line);
+}
+.tw-foot-nav a:hover{color:var(--accent); border-bottom-color:var(--accent)}
+
+/* --------------------------------------------------------- back-to-top */
+.tw-totop{
+  position:fixed; right:20px; bottom:24px; z-index:30;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--card); border:1px solid var(--line); color:var(--accent-d);
+  text-decoration:none; font-size:15px; box-shadow:0 1px 6px rgba(0,0,0,.07);
+  opacity:.85;
+}
+.tw-totop:hover{opacity:1; border-color:var(--accent); color:var(--accent)}
+
+/* --------------------------------------------------------------- mobile */
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{padding:34px 16px 90px}
+  header.doc h1,header.title h1{font-size:25px}
+  .book-zh{font-size:22px}
+  h2,h2.section{font-size:20px; margin-top:44px}
+  h3,h3.sub{font-size:17px}
+  p.en{font-size:13.5px}
+  p.zh{font-size:16px}
+  td.de,td.zh,td.en{white-space:normal}
+  table,table.gloss{font-size:13px}
+  th,td{padding:7px 9px}
+  thead th{position:static}
+  .tw-totop{right:12px; bottom:14px}
+}
+
+/* ----------------------------------------------------------------- print */
+@media print{
+  .tw-bar,.tw-totop,.tw-foot-nav{display:none}
+  body{background:#fff; font-size:11pt}
+  .wrap{max-width:none; padding:0}
+  a{color:inherit; border:0}
+  .toc,nav.toc{break-inside:avoid}
+  h2,h2.section{break-after:avoid}
+}

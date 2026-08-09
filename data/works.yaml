@@ -1,0 +1,167 @@
+# data/works.yaml —— 由「小书桌」页面导出。覆盖仓库中同名文件后重新构建。
+# place: shelf 书架 / drawer 归档抽屉 / desk 台面
+# solid: true 实体书脊 / false 虚体（书架上留一格空位）
+# cells: 每字符一格 —— f 译毕、h 节译或残稿、e 未译；~ 表示不画进度格
+
+# ── 书架 ──
+- id: horoscopes
+  place: shelf
+  solid: true
+  title: "天宫图与公共领域"
+  sub: "星占学史论集 · 分章全译本"
+  stage: "2026 年 7 月 · 全书译毕"
+  spine:
+    label: "天宫图与公共领域"
+    w: 3.5
+    h: 12.6
+    color: "#37455e"
+  cells: "fffffffffffffff"
+  cite: >-
+    Günther Oestmann、H. Darrel Rutkin、Kocku von Stuckrad 编，<i>Horoscopes and Public Spheres</i>，de Gruyter, 2005
+  key: >-
+    十五篇 · 约 22 万字 · <b>345 条校注</b> · 36 图版 · 28 数据表
+  blurb: >-
+    十五位学者从苏拉、阿格里皮娜、哈德良一路写到玛沙阿拉、阿克巴、卡尔达诺与普法夫，问的是同一个问题：一张天宫图如何进入公共生活——它替谁说话，又被谁拿来立威、问病、写传记。
+  next: >-
+    术语首见处标英文原文，校注置右侧边栏；原书页码与脚注编号照原书，可直接引用。
+  links:
+    - label: "阅读全书"
+      href: "translation/horoscopes/"
+      primary: true
+    - label: "全书术语表"
+      href: "translation/horoscopes/#sec-glossary"
+- id: psycho
+  place: shelf
+  solid: true
+  title: "二十世纪本命占星学的心理学化"
+  sub: "详细中文摘要 · 非逐字翻译"
+  stage: "2026 年 7 月 · 全九章译毕"
+  spine:
+    label: "占星学的心理学化"
+    w: 2.5
+    h: 11.4
+    color: "#5d4a7e"
+  cells: "fffffffff"
+  cite: >-
+    Laura Andrikopoulos，<i>The Psychologisation of Natal Astrology in the Twentieth Century</i>，博士论文，2023 · 99,881 词
+  key: >-
+    九章全覆盖 · 逐章保留核心论点、关键学者立场与推理链条
+  blurb: >-
+    以荣格、艾伦·里奥、丹恩·鲁伊尔、丽兹·格林四人为个案，检验哈内赫拉夫的「心理学化」命题。结论是：二十世纪心理占星只是部分被心理学化——它更着魅而非祛魅。
+  next: >-
+    体例是论证摘要而非全文翻译，引用时请回原论文核对。
+  links:
+    - label: "阅读全文"
+      href: "translation/psychologisation.html"
+      primary: true
+
+# ── 台面 ──
+- id: tarot
+  place: desk
+  solid: true
+  recension: true
+  title: "塔罗冥想"
+  sub: "基督信仰的内在隐修之旅 · 精校"
+  stage: "2026 年 8 月起"
+  spine:
+    label: "塔罗冥想"
+    w: 3.2
+    h: 11
+    color: "#7a4a22"
+  cells: "heeeeeeeeeeeeefeeeeeee"
+  cite: >-
+    Anonymous（一般认为是 Valentin Tomberg），<i>Meditations on the Tarot</i>，英译 Robert Powell，Tarcher/Penguin, 2002 · 658 页
+  key: >-
+    二十二封信，格子按信的序号排列——实心那格是第十五封「恶魔」（126 个对照单元 · 43 条注释），斜杠那格是第一封「魔法师」，样章，只到英文底本第 8 页
+  blurb: >-
+    二十二封写给「不知名朋友」的信，一封对着一张大阿卡纳。汉语已有译本，但系从英译转译，专名与术语出入较大。这一版不重译，只精校：中译在上、英文按段可展开，改动处标橙色虚线，注释分术语、出处、背景、校记四类。
+  next: >-
+    续校其余二十封。各封的页码范围与注释条数见全书目录页。
+  links:
+    - label: "阅读全书目录"
+      href: "translation/tarot/"
+      primary: true
+    - label: "第十五封 · 恶魔"
+      href: "translation/tarot/15-devil.html"
+    - label: "第一封 · 魔法师"
+      href: "translation/tarot/01-magician.html"
+- id: reintegration
+  place: desk
+  solid: true
+  title: "诸存在重新融合论"
+  sub: "进入他们原初的属性、美德与神圣的精神力量"
+  stage: "2026 年 5 月起"
+  spine:
+    label: "诸存在重新融合论"
+    w: 2.8
+    h: 10.2
+    color: "#4a5a44"
+  cells: "fffffffffee"
+  cite: >-
+    Martinès de Pasqually，<i>Treatise on the Reintegration of Beings</i>，法文原稿 1770–1772；英译 Traditional Martinist Order, 2018
+  key: >-
+    全书十一部 · 已译<b>导论与第一至第九部</b>（亚当、加音、亚伯尔、哈诺客、诺厄、诺厄的众智者、亚巴郎、依撒格、雅各伯）· 261 组中英对照段落
+  blurb: >-
+    十八世纪马丁主义的奠基文本，讲神性的流溢、亚当的堕落与「重新融合」之路，是圣马丁一系秘教神学的源头。中英逐段对照；圣经人名地名从思高本，与帕斯夸利的天主教背景一致，括号内并列和合本译名。
+  next: >-
+    第十部「梅瑟」（§184–279，约占全书三分之一）与第十一部「撒乌耳」，依同一体例译出。
+  links:
+    - label: "阅读全文"
+      href: "translation/reintegration.html"
+      primary: true
+    - label: "术语对照表"
+      href: "translation/glossary-reintegration.html"
+- id: planets
+  place: desk
+  solid: true
+  title: "行星之内"
+  sub: "马尔西利奥·菲奇诺的占星学心理学"
+  stage: "2026 年 2–3 月 · 校订中"
+  spine:
+    label: "行星之内"
+    w: 2.6
+    h: 9.6
+    color: "#5d4a7e"
+  cells: "hheehfffffffeh"
+  cite: >-
+    Thomas Moore，<i>The Planets Within</i>，Lindisfarne Press, 1989（初版 Bucknell UP, 1982）
+  key: >-
+    全书十四章，格子按章号排列 · 前言、序言、导言与<b>第六至第十二章</b>已译毕并校读 · 第一、二、五章节译 · 第十四章残稿 · <b>第三、四、十三章尚缺</b>
+  blurb: >-
+    透过菲奇诺《论三重生命》重读文艺复兴的星辰魔法：行星不是占卜的对象，而是灵魂的诸种音调。摩尔把菲奇诺读成一位原型心理学家，「认识你自己」于是成了「认识众星」。
+  next: >-
+    补译第三章「溶解与凝聚」、第四章「心灵的元素」、第十三章「火星」。原 PDF 这几段被机器生成的填充文字顶替，取舍依据已另文写明。
+  links:
+    - label: "阅读全文"
+      href: "translation/planets-within.html"
+      primary: true
+    - label: "术语对照表"
+      href: "translation/glossary-planets.html"
+    - label: "PDF 印本"
+      href: "translation/files/planets-within-zh.pdf"
+    - label: "整理清单与取舍依据"
+      href: "planets-manifest/"
+- id: pfister
+  place: desk
+  solid: true
+  title: "基督教与焦虑"
+  sub: "样章试译 · 一张纸的分量"
+  stage: "2026 年 7 月"
+  spine:
+    label: "基督教与焦虑"
+    w: 2.4
+    h: 9
+    color: "#6b5340"
+  cells: ~
+  cite: >-
+    Oskar Pfister，<i>Das Christentum und die Angst</i>，苏黎世，1944 · 580 页 · 分心理学、历史、宗教卫生学三部
+  key: >-
+    章数未清点，故此处不画进度格。已译 <b>第一章「导论：摆在我们面前的任务」</b>（原书 1–10 页），附〔原书页码〕标记 · 德—中术语表 94 条已定稿
+  blurb: >-
+    普菲斯特是弗洛伊德的挚友、苏黎世的牧师兼精神分析家。这部晚年之作把焦虑放进基督教两千年的历史里追问：信仰究竟解除焦虑，还是制造焦虑？
+  next: >-
+    术语表已定稿，其余章节可据此体例续译。尚未排期。
+  links:
+    - label: "阅读样章与术语表"
+      href: "translation/pfister-angst.html"
+      primary: true

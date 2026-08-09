@@ -1,0 +1,270 @@
+/* ==========================================================
+   《天宫图与公共领域》中译本 — 共用样式表
+   版式为译者原作（校勘格式）；配色与正文字体已对齐 tw.css。
+   各篇特有的规则以页内 <style> 追加，见每页 <head>。
+   ========================================================== */
+:root{--paper:#faf7f1;
+    --paper-2:#f3eede;
+    --panel:#f7f2e8;
+    --ink:#23201c;
+    --ink-soft:#5c554b;
+    --porphyry:#6d5b97;     
+    --porphyry-soft:#8a76b3;
+    --gild:#8a6d1f;          
+    --slate:#3f5560;         
+    --slate-soft:#5c727d;
+    --rule:#cfc5b0;
+    --rule-soft:#e4dccb;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;
+    background:
+      radial-gradient(circle at 18% 8%, #fdfbf6 0%, rgba(240,236,227,0) 40%),
+      radial-gradient(circle at 88% 92%, #f4efe4 0%, rgba(230,225,214,0) 45%),
+      var(--paper);
+    color:var(--ink);
+    font-family:"FZYaSong","EB Garamond","Noto Serif SC","Source Han Serif SC","Songti SC",serif;
+    font-weight:400;
+    line-height:1.95;
+    font-size:18px;
+    letter-spacing:.01em;}
+.page{max-width:1180px; margin:0 auto; padding:0 clamp(1.1rem,4vw,2.4rem);}
+.masthead{padding:clamp(3rem,8vw,5.5rem) 0 2.4rem;
+    border-bottom:1px solid var(--rule);
+    margin-bottom:2.8rem;
+    position:relative;}
+.eyebrow{font-family:"EB Garamond",serif;
+    font-size:.86rem; letter-spacing:.32em; text-transform:uppercase;
+    color:var(--gild); margin:0 0 1.4rem;}
+.masthead-grid{display:flex; gap:2.4rem; align-items:flex-start; flex-wrap:wrap;}
+.mark{flex:0 0 auto; margin-top:.4rem;}
+.mark svg{display:block; width:96px; height:96px;}
+.title-block{flex:1 1 320px; min-width:0;}
+h1.title{font-weight:500; font-size:clamp(1.9rem,4.6vw,3rem);
+    line-height:1.28; margin:0 0 .55rem; letter-spacing:.02em;}
+.title .years{color:var(--porphyry); font-weight:500;}
+.title-en{font-family:"EB Garamond",serif; font-style:italic;
+    font-size:clamp(1.05rem,2.4vw,1.35rem); color:var(--ink-soft);
+    margin:0 0 1.3rem; line-height:1.4; font-weight:400;}
+.byline{font-size:.98rem; color:var(--ink-soft); line-height:1.7;}
+.byline .src{font-family:"EB Garamond",serif; font-style:italic;}
+.byline b{font-weight:500; color:var(--ink);}
+.colophon{background:var(--panel);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--slate);
+    padding:1.4rem 1.7rem; margin:0 0 3rem;
+    font-size:.92rem; line-height:1.85; color:var(--ink-soft);
+    border-radius:2px;}
+.colophon h3{margin:0 0 .7rem; font-size:.84rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--slate); font-weight:600;
+    font-family:"Noto Sans SC",sans-serif;}
+.colophon .legend{display:flex; flex-wrap:wrap; gap:.5rem 1.6rem; margin-top:.8rem;}
+.colophon .legend span{display:inline-flex; align-items:center; gap:.45rem; font-size:.86rem;}
+.swatch{width:1.5em; height:.4em; border-radius:2px; display:inline-block;}
+section.glossary{margin:0 0 3.4rem;}
+.sec-head{display:flex; align-items:baseline; gap:.9rem; margin:0 0 1.3rem;}
+.sec-num{font-family:"EB Garamond",serif; font-size:1.1rem; color:var(--gild);
+    letter-spacing:.06em; flex:0 0 auto;}
+.sec-title{font-size:1.18rem; font-weight:500; margin:0; letter-spacing:.04em;}
+.sec-title small{font-family:"EB Garamond",serif; font-style:italic; color:var(--ink-soft); font-weight:400; font-size:.8em; margin-left:.5em;}
+.gloss-table{width:100%; border-collapse:collapse; font-size:.92rem;}
+.gloss-table th{text-align:left; font-family:"Noto Sans SC",sans-serif; font-weight:500;
+    font-size:.76rem; letter-spacing:.12em; text-transform:uppercase; color:var(--slate);
+    border-bottom:1.5px solid var(--rule); padding:.5rem .7rem .55rem; white-space:nowrap;}
+.gloss-table td{padding:.62rem .7rem; border-bottom:1px solid var(--rule-soft); vertical-align:top; line-height:1.7;}
+.gloss-table tr:hover td{background:rgba(151,112,40,.05);}
+.gloss-table .en{font-family:"EB Garamond",serif; font-style:italic; color:var(--porphyry); white-space:nowrap;}
+.gloss-table .zh{font-weight:500; white-space:nowrap;}
+.gloss-table .note{color:var(--ink-soft); font-size:.88rem; line-height:1.65;}
+article.reading{max-width:44rem;}
+article.reading h2.ch{font-size:clamp(1.45rem,3.4vw,1.9rem); font-weight:500; letter-spacing:.05em;
+    margin:3.4rem 0 .4rem; padding-top:1.6rem; border-top:1px solid var(--rule);}
+article.reading h2.ch:first-of-type{margin-top:0;}
+article.reading h2.ch .en{display:block; font-family:"EB Garamond",serif; font-style:italic; font-weight:400; font-size:.62em; color:var(--ink-soft); letter-spacing:.04em; margin-top:.25rem;}
+article.reading h3.sub{font-size:1.12rem; font-weight:500; margin:2.4rem 0 .2rem; color:var(--porphyry); letter-spacing:.03em;}
+article.reading p{margin:0 0 1.35rem; text-align:justify;}
+article.reading p.lead{font-size:1.06rem;}
+.dropcap::first-letter{}
+.t{border-bottom:1px dotted var(--porphyry-soft);}
+.t .en{font-family:"EB Garamond",serif; font-style:italic;
+    color:var(--porphyry); font-size:.82em; margin-left:.12em; letter-spacing:.01em;}
+.lat{font-family:"EB Garamond",serif; font-style:italic; color:var(--ink-soft);}
+sup.fnref{font-family:"EB Garamond",serif; color:var(--porphyry); font-size:.72em; padding:0 .12em; cursor:default; font-style:normal; vertical-align:super;}
+.jiaozhu{background:linear-gradient(180deg,#e9ece9,#e4e8e6);
+    border-left:2px solid var(--slate);
+    padding:.85rem 1rem; margin:1.4rem 0;
+    font-size:.84rem; line-height:1.7; color:var(--slate);
+    font-family:"Noto Sans SC",sans-serif; border-radius:2px;}
+.jiaozhu .tag{display:block; font-size:.68rem; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--slate-soft); margin-bottom:.35rem; font-weight:500;}
+@media (min-width:1080px){
+  .jiaozhu{float:right; clear:right; width:16rem; margin:.35rem -17.6rem 1.1rem 0;}
+}
+blockquote{margin:1.5rem 0; padding:.4rem 0 .4rem 1.4rem;
+    border-left:2px solid var(--gild);
+    color:var(--ink-soft); font-size:.96rem; line-height:1.85;}
+blockquote cite{display:block; margin-top:.5rem; font-style:normal; font-size:.85rem; color:var(--slate); font-family:"EB Garamond",serif;}
+blockquote cite::before{content:"—— ";}
+.footnotes{margin:3rem 0 1rem; padding-top:1.4rem; border-top:1px solid var(--rule);
+    font-size:.83rem; line-height:1.72; color:var(--ink-soft);}
+.footnotes h4{font-family:"Noto Sans SC",sans-serif; font-weight:500; font-size:.74rem;
+    letter-spacing:.18em; text-transform:uppercase; color:var(--slate); margin:0 0 1rem;}
+.footnotes ol{margin:0; padding-left:1.6rem;}
+.footnotes li{margin:0 0 .7rem; padding-left:.3rem;}
+.footnotes .lat{color:var(--porphyry-soft);}
+.continue{margin:3.2rem 0 1rem; padding:1.5rem 1.7rem;
+    background:var(--panel); border:1px dashed var(--rule);
+    text-align:center; font-family:"Noto Sans SC",sans-serif; font-size:.92rem;
+    color:var(--slate); border-radius:3px; line-height:1.8;}
+.continue b{color:var(--porphyry); font-weight:500;}
+footer.foot{margin-top:3rem; padding:2rem 0 3rem; border-top:1px solid var(--rule);
+    font-size:.8rem; color:var(--slate); font-family:"Noto Sans SC",sans-serif;
+    line-height:1.7;}
+@media (max-width:560px){
+  body{font-size:16.5px; line-height:1.9;}
+  .gloss-table .note{display:none;}
+  .gloss-table .zh,.gloss-table .en{white-space:normal;}
+}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+}
+nav.toc{margin:0 0 3rem; padding:1.3rem 1.6rem;
+    background:linear-gradient(180deg,#f0eade,#e9e2d2);
+    border:1px solid var(--rule); border-radius:3px;
+    columns:2; column-gap:2.4rem;}
+nav.toc .toc-head{column-span:all; font-family:"Noto Sans SC",sans-serif; font-weight:600;
+    font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--slate);
+    margin:0 0 .9rem; padding-bottom:.6rem; border-bottom:1px solid var(--rule);}
+nav.toc .toc-head span{font-family:"EB Garamond",serif; font-style:italic; text-transform:none; letter-spacing:.02em; color:var(--ink-soft);}
+nav.toc ol{list-style:none; margin:0; padding:0;}
+nav.toc > ol > li{margin:.32rem 0; break-inside:avoid;}
+nav.toc ol ol{padding-left:1.1rem; margin:.18rem 0 .35rem;}
+nav.toc a{color:var(--ink); text-decoration:none; font-size:.95rem; border-bottom:1px solid transparent; transition:border-color .15s,color .15s;}
+nav.toc a:hover{color:var(--porphyry); border-bottom-color:var(--porphyry-soft);}
+nav.toc ol ol a{font-size:.88rem; color:var(--ink-soft);}
+@media (max-width:560px){
+  nav.toc{columns:1;}
+}
+figure.fig{margin:2.2rem 0; padding:1rem 1rem .5rem; background:#fffdf8; border:1px solid var(--rule); border-radius:3px;}
+figure.fig img{display:block; width:100%; height:auto; border-radius:2px;}
+figure.fig figcaption{margin-top:.8rem; padding-top:.7rem; border-top:1px solid var(--rule-soft); font-family:"Noto Sans SC",sans-serif; font-size:.85rem; line-height:1.72; color:var(--ink-soft);}
+figure.fig .fnum{color:var(--porphyry); font-weight:600;}
+figure.fig .legend-line, figure.fig .src-line{display:inline-block; margin-top:.4rem; font-size:.8rem; color:var(--slate);}
+sup.fnref{cursor:pointer;}
+sup.fnref a{color:var(--porphyry); text-decoration:none;}
+sup.fnref a:hover{text-decoration:underline;}
+.footnotes li{scroll-margin-top:1rem;}
+.footnotes li:target{background:rgba(151,112,40,.14); border-radius:2px;}
+#fn-tooltip{position:fixed; z-index:9999; display:none;
+    background:#fffdf8; color:var(--ink);
+    border:1px solid var(--slate); border-left:3px solid var(--slate);
+    box-shadow:0 8px 30px rgba(30,24,18,.18);
+    padding:.75rem .95rem; border-radius:3px;
+    font-family:"Noto Sans SC",sans-serif; font-size:.82rem; line-height:1.68;
+    max-height:46vh; overflow:auto;}
+#fn-tooltip b{color:var(--porphyry);}
+#fn-tooltip .lat{color:var(--porphyry-soft);}
+#to-top{position:fixed; right:18px; bottom:18px; z-index:9998; display:none;
+    width:44px; height:44px; align-items:center; justify-content:center;
+    background:var(--porphyry); color:#f7f2e8; border:none; border-radius:50%;
+    cursor:pointer; box-shadow:0 4px 16px rgba(30,24,18,.28); font-size:1.1rem;}
+#to-top:hover{background:var(--porphyry-soft);}
+.pg{font-family:"EB Garamond",serif; font-size:.72rem; color:var(--gild);
+       letter-spacing:.04em; padding:0 .35em; white-space:nowrap; user-select:none;}
+.pg::before{content:"|"; margin-right:.35em; color:var(--rule);}
+.booknav{display:flex; flex-wrap:wrap; align-items:center; gap:.6rem 1.1rem;
+    margin:0 0 2.2rem; padding:.7rem 1rem;
+    background:var(--panel); border:1px solid var(--rule); border-radius:3px;
+    font-family:"Noto Sans SC",sans-serif; font-size:.83rem; color:var(--slate);}
+.booknav a{color:var(--slate); text-decoration:none; border-bottom:1px solid var(--rule);}
+.booknav a:hover{color:var(--porphyry); border-bottom-color:var(--porphyry-soft);}
+.booknav .bk{font-family:"EB Garamond",serif; font-style:italic; color:var(--ink-soft);}
+.booknav .spacer{flex:1 1 auto;}
+figure.fig.plate img{background:#fff;}
+.grk{font-family:"EB Garamond","Times New Roman",serif; font-style:normal; color:var(--ink-soft);}
+blockquote.para{border-left:2px solid var(--gild); padding-left:1.4rem;}
+blockquote.para .qlabel{display:block; font-family:"Noto Sans SC",sans-serif; font-size:.68rem;
+    letter-spacing:.2em; text-transform:uppercase; color:var(--slate-soft);
+    margin:.1rem 0 .35rem;}
+blockquote.para .orig{font-family:"EB Garamond",serif; font-size:.94rem; line-height:1.75;
+    color:var(--ink-soft); margin:0 0 .9rem;}
+blockquote.para .orig em, blockquote.para .orig .lat{font-style:italic;}
+blockquote.para .zh{margin:0; color:var(--ink); font-size:.96rem;}
+blockquote.para .verse{white-space:pre-wrap;}
+.reflist{font-size:.83rem; line-height:1.75; color:var(--ink-soft); font-family:"EB Garamond",serif;}
+.reflist p{margin:0 0 .5rem; padding-left:2em; text-indent:-2em; text-align:left;}
+.reflist .zhnote{font-family:"Noto Sans SC",sans-serif; font-size:.9em; color:var(--slate);}
+sup.starref{font-family:"EB Garamond",serif; color:var(--porphyry); font-size:.8em;}
+.footnotes .starnote{margin:0 0 .9rem; padding-left:1.1em; text-indent:-1.1em;}
+.gloss-intro{font-size:.86rem; color:var(--ink-soft); margin:0 0 .9rem;
+                font-family:"Noto Sans SC",sans-serif;}
+table.dtable.recon{border:1px dashed var(--rule);}
+table.dtable.recon caption::after{content:"〔译者据正文重建〕"; margin-left:.6em; font-size:.78rem;
+    color:var(--slate-soft); font-weight:400; font-family:"Noto Sans SC",sans-serif;}
+table.dtable{width:100%; border-collapse:collapse; font-size:.86rem; margin:1.5rem 0 .4rem; font-family:"Noto Sans SC",sans-serif;}
+table.dtable caption{caption-side:top; text-align:left; font-size:.92rem; font-weight:500; color:var(--ink); margin-bottom:.55rem;}
+table.dtable caption .fnum{color:var(--porphyry); font-weight:600; margin-right:.45em;}
+table.dtable th{text-align:right; font-weight:500; font-size:.74rem; letter-spacing:.03em; color:var(--slate); border-bottom:1.5px solid var(--rule); padding:.45rem .55rem;}
+table.dtable th.l{text-align:left;}
+table.dtable td{text-align:right; padding:.4rem .55rem; border-bottom:1px solid var(--rule-soft); font-variant-numeric:tabular-nums;}
+table.dtable td.l{text-align:left; color:var(--ink);}
+table.dtable.has-total tbody tr:last-child td{border-top:1.5px solid var(--rule); border-bottom:none; font-weight:600;}
+table.dtable tbody tr:last-child td{border-bottom:none;}
+table.dtable tr:hover td{background:rgba(151,112,40,.05);}
+table.dtable .sub2{font-size:.66rem; color:var(--slate-soft); font-weight:400;}
+.tbl-note{font-size:.82rem; color:var(--ink-soft); line-height:1.7; margin:.2rem 0 1.6rem; font-family:"Noto Sans SC",sans-serif;}
+.tbl-note b{color:var(--slate); font-weight:600;}
+
+/* tw.css 的公共变量（站点外壳与本书版式共用） */
+:root{
+  --accent-d:#4b3d70;
+  --faint:#938a7c;
+  --sans:"Noto Sans SC","PingFang SC","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+}
+
+/* 站点正文中文字体。unicode-range 限定在 CJK：该字库没有拉丁重音字形，
+   若让它认领拉丁文，Firmicus / Māshāʾallāh 这类词会逐字回退、字距散开。
+   拉丁与希腊文因此始终落到 EB Garamond。 */
+@font-face{
+  font-family:"FZYaSong";
+  src:url("../../fonts/fangzheng_yasong.woff2") format("woff2"),
+      url("../../fonts/fangzheng_yasong.woff") format("woff");
+  font-weight:400; font-style:normal; font-display:swap;
+  unicode-range:U+2E80-2EFF, U+3000-303F, U+3040-30FF, U+3200-4DBF,
+                U+4E00-9FFF, U+F900-FAFF, U+FE30-FE4F, U+FF00-FFEF;
+}
+
+/* ================================================================ 站点外壳
+   顶栏、版权声明。变量沿用 tw.css 的命名，取值见 :root 追加块。 */
+.tw-bar{
+  position:sticky; top:0; z-index:40;
+  background:rgba(250,247,241,.94);
+  backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid var(--line);
+  font-family:var(--sans); font-size:13.5px; letter-spacing:.02em;
+}
+.tw-bar .tw-bar-in{
+  max-width:1180px; margin:0 auto;
+  padding:10px clamp(1.1rem,4vw,2.4rem);
+  display:flex; align-items:center; gap:9px;
+}
+.tw-bar a{color:var(--soft); text-decoration:none; border-bottom:1px solid transparent}
+.tw-bar a:hover{color:var(--porphyry); border-bottom-color:var(--porphyry)}
+.tw-bar .tw-home{font-weight:600; color:var(--accent-d)}
+.tw-bar .tw-sep{color:var(--faint)}
+.tw-bar .tw-spacer{flex:1}
+.tw-bar .tw-top{font-size:12.5px; color:var(--faint);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:42vw}
+
+.tw-rights{
+  margin:52px 0 0; padding:16px 20px;
+  background:var(--panel); border:1px solid var(--rule-soft); border-radius:10px;
+  font-family:var(--sans); font-size:12.5px; line-height:1.85; color:var(--ink-soft);
+}
+.tw-rights b{color:var(--accent-d); font-weight:700}
+.tw-rights .tw-orig{
+  display:block; margin-top:7px; color:var(--faint); font-size:12px;
+  font-family:"EB Garamond",Georgia,serif; font-style:italic;
+}
+@media print{ .tw-bar{display:none} }

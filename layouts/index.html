@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ if site.Params.privacy.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
+<title>{{ site.Title }}</title>
+<meta name="description" content="灵魂、星辰与深度心理学的中译。多数还没做完，进度都写在纸上。">
+{{ with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{ end }}
+</head>
+<body>
+
+{{ $shelf := where site.Data.works "place" "shelf" }}
+{{ $drawer := where site.Data.works "place" "drawer" }}
+{{ $desk := where site.Data.works "place" "desk" }}
+
+<div class="band-top">
+  <div class="inner">
+    <header class="mast">
+      <h1 class="sitename">{{ site.Title }}</h1>
+      <p class="tagline">{{ site.Params.tagline_1 | safeHTML }}<br>{{ site.Params.tagline_2 | safeHTML }}</p>
+      <div class="bar">
+        <button class="btn" id="editBtn" aria-pressed="false" hidden>✎ 编辑</button>
+        <button class="btn" id="expBtn" hidden>导出 YAML</button>
+        <span class="barhint" id="hint" hidden></span>
+      </div>
+      <div id="exp">
+        <div class="exphead">
+          <button class="btn" id="copyBtn">复制全部</button>
+          <button class="btn" id="dlW">下载 works.yaml</button>
+          <button class="btn" id="dlN">下载 notes.yaml</button>
+          <span class="ok" id="expOk"></span>
+        </div>
+        <textarea readonly spellcheck="false"></textarea>
+      </div>
+    </header>
+
+    <section class="zone">
+      <div class="zonehead">
+        <h2>书架</h2>
+        <span class="cnt" id="shelfCnt">书架上 {{ len $shelf }} 本 · 台面还有 {{ len $desk }} 件</span>
+        <p>做完的立起来成书，鼠标停上去看内容。</p>
+      </div>
+      <div class="shelf" id="shelfRow" data-zone="shelf">
+        {{ range $shelf }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}
+        {{ range $desk }}{{ partial "spine.html" (dict "w" . "solid" false "ondesk" true) }}{{ end }}
+      </div>
+      <div class="board"></div>
+
+      <div class="drawer" id="drawer">
+        <button class="drawerhead" id="drawerHead" aria-expanded="false">
+          <span class="caret">▾</span><span>归档抽屉</span><span class="grip"></span>
+          <span id="drawerCnt" style="color:var(--ink-4)">{{ with len $drawer }}{{ . }} 件{{ end }}</span>
+        </button>
+        <div class="drawerbody" id="drawerBody" data-zone="drawer">
+          <div class="shelf" id="drawerRow" data-zone="drawer">
+            {{ if $drawer }}{{ range $drawer }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}
+            {{ else }}<div class="emptyhint">空的。把台面或书架上暂时不打算做完的拖进来。</div>{{ end }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="edge"></div>
+
+<div class="band-desk">
+  <div class="inner">
+    <section class="zone" style="margin-top:0">
+      <div class="zonehead">
+        <h2>台面</h2>
+        <span class="cnt" id="deskCnt">{{ len $desk }} 件</span>
+        <p>正在做的，摊着。进度格里一格是一个可数单位——一封信、一部、一章，按序号排列；斜杠格是节译或残稿，空格是还没译。</p>
+      </div>
+
+      {{/* 所有作品都渲染成稿纸，不在台面上的先藏起来——这样 JS 移动时不必重新生成正文 */}}
+      <div class="papers" id="papers" data-zone="desk">
+        {{ range site.Data.works }}
+        <article class="paper{{ if .recension }} rec{{ end }}{{ if and .cells (gt (len .cells) 8) }} stack{{ end }}"
+                 data-id="{{ .id }}" data-tip="work" draggable="true"
+                 {{ if ne .place "desk" }}hidden{{ end }}>
+          <div class="handle" title="拖我，或用右边的按钮">⠿ 拖动<button class="mv" data-act="shelf">→ 书架</button><button class="mv" data-act="drawer">→ 归档抽屉</button></div>
+          <div class="phead">
+            <div><h3 class="ptitle">{{ .title }}</h3><p class="psub">{{ .sub }}</p></div>
+            <span class="stage">{{ .stage }}</span>
+          </div>
+          <p class="cite">{{ .cite | safeHTML }}</p>
+          {{ with .cells }}<div class="cells">{{ range $c := split . "" }}<span class="cell {{ if ne $c "e" }}{{ $c }}{{ end }}"></span>{{ end }}</div>{{ end }}
+          <p class="key">{{ .key | safeHTML }}</p>
+          <p class="blurb">{{ .blurb }}</p>
+          <p class="next"><b>下一步</b>　{{ .next }}</p>
+          <div class="links">{{ range .links }}<a class="lk{{ if .primary }} lk-1{{ end }}" href="{{ .href | relURL }}">{{ .label }}</a>{{ end }}</div>
+        </article>
+        {{ end }}
+      </div>
+
+      <div class="notes" id="notes" data-zone="notes">
+        {{ range $i, $n := site.Data.notes }}
+        <div class="note {{ index (slice "a" "b" "c") (mod $i 3) }}" data-id="{{ $n.id }}" data-tip="note" draggable="true">
+          <button class="nx" title="删掉">✕</button>
+          <h3>{{ $n.title }}</h3>
+          <p class="from">{{ $n.from }}</p>
+        </div>
+        {{ end }}
+        <button class="addnote">＋ 便签</button>
+      </div>
+
+      <div class="corner">
+        <div class="cup" aria-hidden="true">
+          <svg viewBox="0 0 90 110" fill="none" stroke="#f0e0c2" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 46 L34 12"/><path d="M30 46 L38 14"/><path d="M45 46 L45 6"/><path d="M60 46 L54 18"/>
+            <path d="M34 12 L38 14 L36 8 Z" fill="#f0e0c2"/><path d="M45 6 L41 13 L49 13 Z" fill="#f0e0c2"/>
+            <path d="M22 48 L68 48 L62 100 L28 100 Z" fill="rgba(250,247,241,.86)" stroke="#f0e0c2"/>
+            <path d="M22 48 L68 48"/><path d="M27 60 L63 60" stroke-width="1.2" opacity=".45"/>
+          </svg>
+        </div>
+        <div class="tools">
+          <h3>桌角的工具</h3>
+          <div class="toollist">
+            {{ range site.Params.tools }}<a class="tool" href="{{ .href | relURL }}">{{ .label }}</a>{{ end }}
+          </div>
+        </div>
+      </div>
+
+      <footer class="note-foot">
+        <b>关于这张桌子</b>　这里的译文由 AI 与人工协作完成。多数项目仍在进行中，每件都标明完成进度及是否为节译、残稿或样章；凡与原书有出入，均以原书为准。发现错处，欢迎来信。
+      </footer>
+    </section>
+  </div>
+</div>
+
+<div id="tip" role="tooltip"></div>
+<div id="menu" role="menu"></div>
+
+<script id="state-works" type="application/json">{{ site.Data.works | jsonify | safeJS }}</script>
+<script id="state-notes" type="application/json">{{ site.Data.notes | jsonify | safeJS }}</script>
+{{ with resources.Get "js/desk.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{ end }}
+</body>
+</html>

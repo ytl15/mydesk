@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{{ if site.Params.privacy.noindex }}<meta name="robots" content="noindex, nofollow">{{ end }}
+<title>{{ .Title }} · {{ site.Title }}</title>
+{{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+{{ with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{ end }}
+</head>
+<body>
+<div class="band-desk" style="min-height:100vh;padding:3rem 0 4rem">
+  <div class="inner">
+    <article class="sheetpage">
+      <a class="back" href="{{ "/" | relURL }}">← 回小书桌</a>
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
+      {{ .Content }}
+    </article>
+  </div>
+</div>
+</body>
+</html>
