@@ -30,6 +30,32 @@
       primary: true
     - label: "全书术语表"
       href: "translation/horoscopes/#sec-glossary"
+- id: saturn
+  place: shelf
+  solid: true
+  title: "纵观土星"
+  sub: "在时间与永恒之间 · 中英对照加注全译本"
+  stage: "2026 年 8 月 · 正文译毕"
+  spine:
+    label: "纵观土星"
+    w: 3.0
+    h: 11.8
+    color: "#565061"
+  cells: "ffffff"
+  cite: >-
+    Charles Obert，<i>Saturn Through the Ages: Between Time and Eternity</i>，Almuten Press, Minneapolis, 2019 · 248 页
+  key: >-
+    <b>正文 pp. 10–244 全部译毕</b>（235 页；未译的是卷前书名页与卷末索引）· 899 个对照单元 · 215 条注释 · <b>210 条术语契约</b>。格子一格是一卷：卷首、第一部历史巡礼、第二部永恒法则、第三部土星主题诸论、结语、附录
+  blurb: >-
+    一位执业占星师写给同行的书。上半部把土星的含义从瓦伦斯、菲尔米库斯、阿布·马沙尔一路点到丽兹·格林与福里斯特，看它如何随世界观的改变而改变；下半部转向柏拉图，问那个更硬的问题：如果时间之外真有不变的法则，土星就不只是限制，而是永恒在时间里留下的边界。
+  next: >-
+    全书术语契约表（§0，210 条）置于正文之前，与《天宫图与公共领域》旧表对齐，分歧四处均注明理由。中文为正文，英文原文与五类注释均可一键开合，全文不用 JavaScript。
+  links:
+    - label: "阅读全书"
+      href: "translation/saturn.html"
+      primary: true
+    - label: "术语契约表"
+      href: "translation/saturn.html#sec-gl"
 - id: psycho
   place: shelf
   solid: true
@@ -56,41 +82,69 @@
       primary: true
 
 # ── 台面 ──
+- id: malaise
+  place: desk
+  solid: true
+  title: "现代性的隐忧"
+  sub: "需要被挽救的本真理想 · 重译"
+  stage: "2026 年 8 月起"
+  spine:
+    label: "现代性的隐忧"
+    w: 2.7
+    h: 9.8
+    color: "#7a3b33"
+  cells: "feeeeeeeee"
+  cite: >-
+    Charles Taylor，<i>The Malaise of Modernity</i>，House of Anansi Press, 1991（1991 年梅西讲座）· 全十章
+  key: >-
+    格子按章号排列 · 已译<b>第一章「三个隐忧」</b>全章初稿（七个对照单元，分六页），其余九章未译
+  blurb: >-
+    泰勒把现代人的不安收进三条线索：个人主义带来的意义流失、工具理性的扩张、以及随之而来的政治自由的萎缩。他既不为现代性辩护也不唱衰，而是问：这些发展怎样才能被引向它最好的那一面。
+  next: >-
+    体例是英文原文与重译两栏并置，段下另附「译法说明」，交代每处取舍的理由。先把第一章的初稿复核定稿，再往下推第二章「未及言明的争论」。
+  links:
+    - label: "阅读第一章"
+      href: "translation/malaise-ch1.html"
+      primary: true
 - id: tarot
   place: desk
   solid: true
   recension: true
   title: "塔罗冥想"
   sub: "基督信仰的内在隐修之旅 · 精校"
-  stage: "2026 年 8 月起"
+  stage: "2026 年 8 月 · 已精校三封"
   spine:
     label: "塔罗冥想"
     w: 3.2
     h: 11
     color: "#7a4a22"
-  cells: "heeeeeeeeeeeeefeeeeeee"
+  cells: "feeeeeeeeeeefefeeeeeee"
   cite: >-
     Anonymous（一般认为是 Valentin Tomberg），<i>Meditations on the Tarot</i>，英译 Robert Powell，Tarcher/Penguin, 2002 · 658 页
   key: >-
-    二十二封信，格子按信的序号排列——实心那格是第十五封「恶魔」（126 个对照单元 · 43 条注释），斜杠那格是第一封「魔法师」，样章，只到英文底本第 8 页
+    二十二封信，格子按信的序号排列 · 已精校<b>第一封「魔法师」</b>（英文底本 pp.1–28 · 106 个对照单元 · 97 条注释）、<b>第十三封「死神」</b>（pp.338–370 · 153 个 · 51 条）、<b>第十五封「恶魔」</b>（pp.399–430 · 123 个 · 44 条）· 合计 <b>382 个对照单元 · 192 条注释 · 43 处译名订正</b>
   blurb: >-
     二十二封写给「不知名朋友」的信，一封对着一张大阿卡纳。汉语已有译本，但系从英译转译，专名与术语出入较大。这一版不重译，只精校：中译在上、英文按段可展开，改动处标橙色虚线，注释分术语、出处、背景、校记四类。
   next: >-
-    续校其余二十封。各封的页码范围与注释条数见全书目录页。
+    续校其余十九封。各封的页码范围与注释条数见全书目录页。
   links:
     - label: "阅读全书目录"
       href: "translation/tarot/"
       primary: true
-    - label: "第十五封 · 恶魔"
-      href: "translation/tarot/15-devil.html"
     - label: "第一封 · 魔法师"
       href: "translation/tarot/01-magician.html"
+    - label: "第十三封 · 死神"
+      href: "translation/tarot/13-death.html"
+    - label: "第十五封 · 恶魔"
+      href: "translation/tarot/15-devil.html"
+
+# ── 归档抽屉 ──
 - id: reintegration
-  place: desk
+  place: drawer
   solid: true
   title: "诸存在重新融合论"
   sub: "进入他们原初的属性、美德与神圣的精神力量"
-  stage: "2026 年 5 月起"
+  stage: "2026 年 5 月起 · 暂搁"
   spine:
     label: "诸存在重新融合论"
     w: 2.8
@@ -104,7 +158,7 @@
   blurb: >-
     十八世纪马丁主义的奠基文本，讲神性的流溢、亚当的堕落与「重新融合」之路，是圣马丁一系秘教神学的源头。中英逐段对照；圣经人名地名从思高本，与帕斯夸利的天主教背景一致，括号内并列和合本译名。
   next: >-
-    第十部「梅瑟」（§184–279，约占全书三分之一）与第十一部「撒乌耳」，依同一体例译出。
+    尚缺第十部「梅瑟」（§184–279，约占全书三分之一）与第十一部「撒乌耳」。已译的九部可照常读，等排得开再依同一体例续译。
   links:
     - label: "阅读全文"
       href: "translation/reintegration.html"
@@ -112,11 +166,11 @@
     - label: "术语对照表"
       href: "translation/glossary-reintegration.html"
 - id: planets
-  place: desk
+  place: drawer
   solid: true
   title: "行星之内"
   sub: "马尔西利奥·菲奇诺的占星学心理学"
-  stage: "2026 年 2–3 月 · 校订中"
+  stage: "2026 年 2–3 月 · 暂搁"
   spine:
     label: "行星之内"
     w: 2.6
@@ -130,7 +184,7 @@
   blurb: >-
     透过菲奇诺《论三重生命》重读文艺复兴的星辰魔法：行星不是占卜的对象，而是灵魂的诸种音调。摩尔把菲奇诺读成一位原型心理学家，「认识你自己」于是成了「认识众星」。
   next: >-
-    补译第三章「溶解与凝聚」、第四章「心灵的元素」、第十三章「火星」。原 PDF 这几段被机器生成的填充文字顶替，取舍依据已另文写明。
+    尚缺第三章「溶解与凝聚」、第四章「心灵的元素」、第十三章「火星」——原 PDF 这几段被机器生成的填充文字顶替，取舍依据已另文写明。补译暂未排期。
   links:
     - label: "阅读全文"
       href: "translation/planets-within.html"
@@ -142,11 +196,11 @@
     - label: "整理清单与取舍依据"
       href: "planets-manifest/"
 - id: pfister
-  place: desk
+  place: drawer
   solid: true
   title: "基督教与焦虑"
   sub: "样章试译 · 一张纸的分量"
-  stage: "2026 年 7 月"
+  stage: "2026 年 7 月 · 暂搁"
   spine:
     label: "基督教与焦虑"
     w: 2.4

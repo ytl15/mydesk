@@ -2,3 +2,6 @@ public/
 resources/_gen/
 .hugo_build.lock
 .DS_Store
+
+# 挂载盘上不让删文件，作废的东西只能挪进来，等我在终端里自己清
+_to_delete/

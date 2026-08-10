@@ -87,7 +87,31 @@ layouts/index.html     首页模板
 layouts/partials/      书脊
 assets/css/main.css    全部样式
 assets/js/desk.js      拖拽、菜单、浮窗、导出
-static/translation/    译文正文（从小森林搬过来的）
+static/translation/    译文正文
+static/fonts/          方正雅宋（译文页的正文字体，tw/hps/tarot 三张样式表都引它）
 ```
 
 译文正文是独立的 HTML，放在 `static/translation/` 下，Hugo 原样输出，不经过模板。
+
+---
+
+## 加一部新译作，动这三处
+
+1. **把译稿搬进 `static/translation/`。** 不要手抄——用
+   `~/Documents/translation/` 下的两个脚本，它们只加面包屑、版权声明与返回
+   链接，不动正文一个字：
+
+   - `_工具/make-site-pages.py` —— 整本一页的稿子（纵观土星、现代性的隐忧）
+   - `精校/塔罗冥想 - Valentin Tomberg/_convert-tarot.py` + `_make-tarot-index.py`
+     —— 塔罗信按封切分，另生成目录页
+
+   译稿分两类，脚本会自己分辨：**自带样式**的（纯 CSS、零 JavaScript，用隐藏
+   checkbox 开合）整页保留原样；**共用样式**的（靠 JavaScript 开合）才摘掉页内
+   样式改挂 `static/translation/assets/`。两者不能混——`tarot.css` 是按后者写的，
+   套到前者上会让几百个 checkbox 全部露出来。
+
+2. **`data/works.yaml` 加一条记录**，照上面的字段表填，进度格按序号排。
+
+3. **术语表之类要摆到桌角的，在 `hugo.toml` 的 `[[params.tools]]` 里加一条。**
+
+改完 `hugo server` 看一眼，`git diff` 确认，再提交。

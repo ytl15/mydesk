@@ -18,6 +18,9 @@ enableRobotsTXT = true
   tagline_2 = '灵魂、星辰与深度心理学的中译。多数还没做完，进度都写在纸上。'
   # 桌角的工具（术语表、凡例）
   [[params.tools]]
+    label = '纵观土星 · 术语契约表（210 条）'
+    href  = 'translation/saturn.html#sec-gl'
+  [[params.tools]]
     label = '诸存在重新融合论 · 术语对照表'
     href  = 'translation/glossary-reintegration.html'
   [[params.tools]]
