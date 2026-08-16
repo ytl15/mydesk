@@ -112,21 +112,21 @@
   recension: true
   title: "塔罗冥想"
   sub: "基督信仰的内在隐修之旅 · 精校"
-  stage: "2026 年 8 月 · 已精校三封"
+  stage: "2026 年 8 月 · 已精校五封"
   spine:
     label: "塔罗冥想"
     w: 3.2
     h: 11
     color: "#7a4a22"
-  cells: "feeeeeeeeeeefefeeeeeee"
+  cells: "feeeeeeeeeeeffffeeeeee"
   cite: >-
     Anonymous（一般认为是 Valentin Tomberg），<i>Meditations on the Tarot</i>，英译 Robert Powell，Tarcher/Penguin, 2002 · 658 页
   key: >-
-    二十二封信，格子按信的序号排列 · 已精校<b>第一封「魔法师」</b>（英文底本 pp.1–28 · 106 个对照单元 · 97 条注释）、<b>第十三封「死神」</b>（pp.338–370 · 153 个 · 51 条）、<b>第十五封「恶魔」</b>（pp.399–430 · 123 个 · 44 条）· 合计 <b>382 个对照单元 · 192 条注释 · 43 处译名订正</b>
+    二十二封信，格子按信的序号排列 · 已精校<b>五封</b>——第一封「魔法师」（英文底本 pp.1–28 · 106 个对照单元 · 97 条注释）、第十三封「死神」（pp.338–370 · 153 个对照单元 · 51 条注释）、第十四封「节制」（pp.371–398 · 140 个对照单元 · 71 条注释）、第十五封「恶魔」（pp.399–430 · 123 个对照单元 · 44 条注释）、第十六封「毁灭之塔」（pp.429–459 · 133 个对照单元 · 73 条注释） · 合计 <b>655 个对照单元 · 336 条注释 · 74 处译名订正</b>
   blurb: >-
     二十二封写给「不知名朋友」的信，一封对着一张大阿卡纳。汉语已有译本，但系从英译转译，专名与术语出入较大。这一版不重译，只精校：中译在上、英文按段可展开，改动处标橙色虚线，注释分术语、出处、背景、校记四类。
   next: >-
-    续校其余十九封。各封的页码范围与注释条数见全书目录页。
+    续校其余十七封。第十三至十六封已连成一段，接着往下推第十七封「星星」最省事。各封的页码范围与注释条数见全书目录页。
   links:
     - label: "阅读全书目录"
       href: "translation/tarot/"
@@ -135,8 +135,12 @@
       href: "translation/tarot/01-magician.html"
     - label: "第十三封 · 死神"
       href: "translation/tarot/13-death.html"
+    - label: "第十四封 · 节制"
+      href: "translation/tarot/14-temperance.html"
     - label: "第十五封 · 恶魔"
       href: "translation/tarot/15-devil.html"
+    - label: "第十六封 · 毁灭之塔"
+      href: "translation/tarot/16-tower.html"
 
 # ── 归档抽屉 ──
 - id: reintegration

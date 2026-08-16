@@ -95,10 +95,29 @@ static/fonts/          方正雅宋（译文页的正文字体，tw/hps/tarot �
 
 ---
 
-## 加一部新译作，动这三处
+## 加东西，三处必须一起改
+
+**正文页、该书的目录页、首页那张卡片——三处任缺其一，站上就自相矛盾。**
+读者会看到目录页写着五封、卡片写着三封这种事。所以：
+
+### 塔罗冥想：跑一条命令，三处一起改
+
+```bash
+cd ~/Documents/translation/精校/塔罗冥想\ -\ Valentin\ Tomberg
+python3 _publish-tarot.py
+```
+
+再精校一封信，事前只要两步：原稿放进那个文件夹，在 `_convert-tarot.py` 的
+`LETTERS` 里那一行末尾填上文件名。剩下的脚本全包：转正文页 → 重生成目录页
+→ **从产物里数出数字回填 `data/works.yaml`**（进度格、封数、统计、链接都不用
+手填）→ 逐条核对四处对不对得上，对不上就报错退出 → 打印 push 命令。
+
+封名以中译本目录页为准，写在 `_convert-tarot.py` 的 `LETTERS` 上方注释里。
+
+### 其他译作：动这三处
 
 1. **把译稿搬进 `static/translation/`。** 不要手抄——用
-   `~/Documents/translation/` 下的两个脚本，它们只加面包屑、版权声明与返回
+   `~/Documents/translation/` 下的脚本，它们只加面包屑、版权声明与返回
    链接，不动正文一个字：
 
    - `_工具/make-site-pages.py` —— 整本一页的稿子（纵观土星、现代性的隐忧）
@@ -115,3 +134,21 @@ static/fonts/          方正雅宋（译文页的正文字体，tw/hps/tarot �
 3. **术语表之类要摆到桌角的，在 `hugo.toml` 的 `[[params.tools]]` 里加一条。**
 
 改完 `hugo server` 看一眼，`git diff` 确认，再提交。
+
+---
+
+## 改完不 push，站上什么都不会变
+
+站是 GitHub Actions 从 `main` 分支构建的。改文件、跑脚本、本地 `hugo server`
+看着都对了——**线上还是上一次 push 的样子**。
+
+```bash
+git status                     # 看看有哪些没提交
+git add -A && git commit -m "…" && git push
+```
+
+push 完 Actions 跑一两分钟才生效。想确认线上到底是哪一版：
+
+```bash
+git rev-parse HEAD origin/main   # 两个一样、且 git status 干净，线上才是这个内容
+```
