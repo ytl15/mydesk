@@ -56,6 +56,32 @@
       primary: true
     - label: "术语契约表"
       href: "translation/saturn.html#sec-gl"
+- id: cycle
+  place: shelf
+  solid: true
+  title: "岁轮"
+  sub: "传统预测占星学 · 中英对照加注全译本"
+  stage: "2026 年 8 月 · 全书译毕"
+  spine:
+    label: "岁轮"
+    w: 2.9
+    h: 10.8
+    color: "#8a6134"
+  cells: "ffffff"
+  cite: >-
+    Charles Obert，<i>The Cycle of the Year: Traditional Predictive Astrology</i>，Benjamin N. Dykes 序，Almuten Press, 2018
+  key: >-
+    <b>全书译毕</b>（原书 pp. 9–155）· 957 个对照单元 · 357 条注释 · 82 幅星盘与图表 · <b>155 条译名契约</b>。格子一格是一卷：卷首、第一部立论与准备、第二部岁轮的诸层级、第三部上手、第四部结语与附录、术语契约表
+  blurb: >-
+    一年之内，什么时候该发生什么？奥伯特把传统预测的几套技法叠成一座金字塔：底下是小限法这样的粗刻度，往上是太阳回归、主限推运，最细的一层是行运。它们不是彼此竞争的流派，而是同一段时间的不同倍率——先看哪一年要紧，再看要紧在哪一处。书末用亨德里克斯、梅尔维尔、梦露、拿破仑、安杰卢等人的盘逐个走一遍。
+  next: >-
+    与《纵观土星》共用一套术语，两书的契约表可互查。另有六讲读书课课件，尚未上站。
+  links:
+    - label: "阅读全书"
+      href: "translation/cycle-of-the-year.html"
+      primary: true
+    - label: "术语契约表"
+      href: "translation/cycle-of-the-year.html#sec-gl"
 - id: psycho
   place: shelf
   solid: true
@@ -112,21 +138,21 @@
   recension: true
   title: "塔罗冥想"
   sub: "基督信仰的内在隐修之旅 · 精校"
-  stage: "2026 年 8 月 · 已精校五封"
+  stage: "2026 年 8 月 · 已精校六封"
   spine:
     label: "塔罗冥想"
     w: 3.2
     h: 11
     color: "#7a4a22"
-  cells: "feeeeeeeeeeeffffeeeeee"
+  cells: "feeeeeeeeeeefffffeeeee"
   cite: >-
     Anonymous（一般认为是 Valentin Tomberg），<i>Meditations on the Tarot</i>，英译 Robert Powell，Tarcher/Penguin, 2002 · 658 页
   key: >-
-    二十二封信，格子按信的序号排列 · 已精校<b>五封</b>——第一封「魔法师」（英文底本 pp.1–28 · 106 个对照单元 · 97 条注释）、第十三封「死神」（pp.338–370 · 153 个对照单元 · 51 条注释）、第十四封「节制」（pp.371–398 · 140 个对照单元 · 71 条注释）、第十五封「恶魔」（pp.399–430 · 123 个对照单元 · 44 条注释）、第十六封「毁灭之塔」（pp.429–459 · 133 个对照单元 · 73 条注释） · 合计 <b>655 个对照单元 · 336 条注释 · 74 处译名订正</b>
+    二十二封信，格子按信的序号排列 · 已精校<b>六封</b>——第一封「魔法师」（英文底本 pp.1–28 · 106 个对照单元 · 97 条注释）、第十三封「死神」（pp.338–370 · 153 个对照单元 · 51 条注释）、第十四封「节制」（pp.371–398 · 140 个对照单元 · 71 条注释）、第十五封「恶魔」（pp.399–430 · 123 个对照单元 · 44 条注释）、第十六封「毁灭之塔」（pp.429–459 · 133 个对照单元 · 73 条注释）、第十七封「星星」（pp.460–490 · 131 个对照单元 · 116 条注释） · 合计 <b>786 个对照单元 · 452 条注释 · 99 处译名订正</b>
   blurb: >-
     二十二封写给「不知名朋友」的信，一封对着一张大阿卡纳。汉语已有译本，但系从英译转译，专名与术语出入较大。这一版不重译，只精校：中译在上、英文按段可展开，改动处标橙色虚线，注释分术语、出处、背景、校记四类。
   next: >-
-    续校其余十七封。第十三至十六封已连成一段，接着往下推第十七封「星星」最省事。各封的页码范围与注释条数见全书目录页。
+    续校其余十六封。接着往下推第十八封「月亮」。各封的页码范围与注释条数见全书目录页。
   links:
     - label: "阅读全书目录"
       href: "translation/tarot/"
@@ -141,6 +167,8 @@
       href: "translation/tarot/15-devil.html"
     - label: "第十六封 · 毁灭之塔"
       href: "translation/tarot/16-tower.html"
+    - label: "第十七封 · 星星"
+      href: "translation/tarot/17-star.html"
 
 # ── 归档抽屉 ──
 - id: reintegration

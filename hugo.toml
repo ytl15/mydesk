@@ -21,6 +21,9 @@ enableRobotsTXT = true
     label = '纵观土星 · 术语契约表（210 条）'
     href  = 'translation/saturn.html#sec-gl'
   [[params.tools]]
+    label = '岁轮 · 术语契约表（155 条）'
+    href  = 'translation/cycle-of-the-year.html#sec-gl'
+  [[params.tools]]
     label = '诸存在重新融合论 · 术语对照表'
     href  = 'translation/glossary-reintegration.html'
   [[params.tools]]
