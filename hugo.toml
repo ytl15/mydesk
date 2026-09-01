@@ -24,6 +24,12 @@ enableRobotsTXT = true
     label = '岁轮 · 术语契约表（155 条）'
     href  = 'translation/cycle-of-the-year.html#sec-gl'
   [[params.tools]]
+    label = '占星诸宫的卡巴拉 · 术语契约表（35 条）'
+    href  = 'translation/morin-cabala.html#sec-gl'
+  [[params.tools]]
+    label = '现代性的隐忧 · 第一章关键术语对照'
+    href  = 'translation/malaise-ch1.html#sec-gl'
+  [[params.tools]]
     label = '诸存在重新融合论 · 术语对照表'
     href  = 'translation/glossary-reintegration.html'
   [[params.tools]]

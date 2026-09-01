@@ -18,11 +18,18 @@ let uid=1000;
 const WHERE={shelf:'书架',drawer:'归档抽屉',desk:'台面'};
 const cellsHTML=cs=>cs?`<div class="cells">${[...cs].map(c=>`<span class="cell ${c==='e'?'':c}"></span>`).join('')}</div>`:'';
 
-/* ---------- 书脊 ---------- */
+/* ---------- 书脊与文件袋 ---------- */
+/* 有主链接的做成 <a>，点开就是那部书；编辑模式下 wireSpine 会截住点击改弹菜单。 */
+const primaryHref=w=>{const l=(w.links||[]).find(x=>x.primary);return l?l.href:''};
+function shelfNode(cls,href){
+  if(href){const a=el('a',cls);a.setAttribute('href',href);return a}
+  const b=el('button',cls);b.type='button';return b;
+}
 function spineEl(w,solid,ondesk){
   const sp=w.spine||{};
-  const b=el('button','spine'+(solid?(w.recension?' rec':''):' ghost')+(ondesk?' ondesk':''),esc(sp.label||w.title));
-  b.type='button'; b.dataset.id=w.id; b.dataset.tip='work'; b.title=w.title;
+  const b=shelfNode('spine'+(solid?(w.recension?' rec':''):' ghost')+(ondesk?' ondesk':''),primaryHref(w));
+  b.innerHTML=`<span class="st">${esc(sp.label||w.title)}</span>`+(sp.byline?`<span class="sa">${esc(sp.byline)}</span>`:'');
+  b.dataset.id=w.id; b.dataset.tip='work'; b.title=w.title;
   b.style.setProperty('--w',(solid?sp.w:sp.w-0.3)+'rem');
   b.style.setProperty('--h',(solid?sp.h:sp.h-0.6)+'rem');
   if(solid&&sp.color)b.style.setProperty('--c',sp.color);
@@ -30,6 +37,22 @@ function spineEl(w,solid,ondesk){
   wireSpine(b,w);
   return b;
 }
+function pouchEl(w){
+  const sp=w.spine||{};
+  const b=shelfNode('pouch',primaryHref(w));
+  b.innerHTML=`<span class="pflap"><i class="ptie"></i></span>`
+    +`<span class="plabel"><span class="pt">${esc(sp.label||w.title)}</span></span>`
+    +(sp.byline?`<span class="pby">${esc(sp.byline)}</span>`:'')
+    +`<span class="pkind">${esc(w.kindmark||'篇')}</span>`;
+  b.dataset.id=w.id; b.dataset.tip='work'; b.title=w.title;
+  if(sp.color)b.style.setProperty('--pc',sp.color);
+  if(sp.h)b.style.setProperty('--ph',sp.h+'rem');
+  b.setAttribute('draggable','true');
+  wireSpine(b,w);
+  return b;
+}
+/* 架上／抽屉里：文件袋是文件袋，其余是书脊。台面上的一律留虚线空位。 */
+const shelfEl=w=>w.form==='pouch'?pouchEl(w):spineEl(w,w.solid,false);
 function wireSpine(b,w){
   b.addEventListener('dragstart',e=>onDragStart(e,w.id,'work'));
   b.addEventListener('dragend',()=>b.classList.remove('dragging'));
@@ -55,11 +78,13 @@ function render(){
   const shelf=$('#shelfRow'),drawerRow=$('#drawerRow'),notesRow=$('#notes');
   shelf.innerHTML='';drawerRow.innerHTML='';
   const onShelf=works.filter(w=>w.place==='shelf'), onDesk=works.filter(w=>w.place==='desk'), inDrawer=works.filter(w=>w.place==='drawer');
-  onShelf.forEach(w=>shelf.appendChild(spineEl(w,w.solid,false)));
+  onShelf.forEach(w=>shelf.appendChild(shelfEl(w)));
   onDesk.forEach(w=>shelf.appendChild(spineEl(w,false,true)));
-  if(inDrawer.length)inDrawer.forEach(w=>drawerRow.appendChild(spineEl(w,w.solid,false)));
+  if(inDrawer.length)inDrawer.forEach(w=>drawerRow.appendChild(shelfEl(w)));
   else drawerRow.appendChild(el('div','emptyhint','空的。把台面或书架上暂时不打算做完的拖进来。'));
-  $('#shelfCnt').textContent=`书架上 ${onShelf.length} 本 · 台面还有 ${onDesk.length} 件`;
+  const nPouch=onShelf.filter(w=>w.form==='pouch').length;
+  $('#shelfCnt').textContent=`书架上 ${onShelf.length-nPouch} 本`
+    +(nPouch?` · ${nPouch} 个文件袋`:'')+` · 台面还有 ${onDesk.length} 件`;
   $('#drawerCnt').textContent=inDrawer.length?inDrawer.length+' 件':'';
   $('#deskCnt').textContent=onDesk.length+' 件';
   works.forEach(w=>{const p=document.querySelector(`.paper[data-id="${w.id}"]`); if(p)p.hidden=(w.place!=='desk')});
@@ -83,6 +108,7 @@ function openMenu(w,x,y){
     h+=`<button data-a="shelf">放上书架</button><button data-a="drawer">放入归档抽屉</button><button disabled>更改显示（在台面上不适用）</button>`;
   }else{
     h+=`<button data-a="solid">更改显示：改为${w.solid?'虚体':'实体'}</button>`;
+    h+=`<button data-a="form">更改显示：改为${w.form==='pouch'?'书脊':'文件袋'}</button>`;
     if(w.place!=='drawer')h+=`<button data-a="drawer">放入归档抽屉</button>`;
     if(w.place!=='shelf')h+=`<button data-a="shelf">放上书架</button>`;
     h+=`<button data-a="desk">放上台面</button>`;
@@ -93,12 +119,14 @@ function openMenu(w,x,y){
   menu.style.top=Math.min(y,innerHeight-r.height-8)+'px';
   menu.querySelectorAll('button[data-a]').forEach(btn=>btn.onclick=()=>{
     const a=btn.dataset.a;
-    if(a==='solid'){w.solid=!w.solid;closeMenu();render()}else move(w,a);
+    if(a==='solid'){w.solid=!w.solid;closeMenu();render()}
+    else if(a==='form'){if(w.form==='pouch')delete w.form;else w.form='pouch';closeMenu();render()}
+    else move(w,a);
   });
   hideTip();
 }
 function closeMenu(){menu.style.display='none'}
-document.addEventListener('click',e=>{if(!e.target.closest('#menu')&&!e.target.closest('.spine'))closeMenu()});
+document.addEventListener('click',e=>{if(!e.target.closest('#menu')&&!e.target.closest('.spine,.pouch'))closeMenu()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
 document.addEventListener('scroll',closeMenu,true);
 
@@ -176,6 +204,7 @@ function worksYAML(){
   let y='# data/works.yaml —— 由「小书桌」页面导出。覆盖仓库中同名文件后重新构建。\n'
        +'# place: shelf 书架 / drawer 归档抽屉 / desk 台面\n'
        +'# solid: true 实体书脊 / false 虚体（书架上留一格空位）\n'
+       +'# form: pouch 文件袋（不是书的东西：单篇、一叠散稿）；不写就是书脊\n'
        +'# cells: 每字符一格 —— f 译毕、h 节译或残稿、e 未译；~ 表示不画进度格\n';
   ['shelf','drawer','desk'].forEach(p=>{
     const list=works.filter(w=>w.place===p);if(!list.length)return;
@@ -184,8 +213,12 @@ function worksYAML(){
       const sp=w.spine||{};
       y+=`- id: ${w.id}\n  place: ${p}\n  solid: ${!!w.solid}\n`;
       if(w.recension)y+=`  recension: true\n`;
+      if(w.form)y+=`  form: ${w.form}\n`;
+      if(w.kindmark)y+=`  kindmark: ${qs(w.kindmark)}\n`;
       y+=`  title: ${qs(w.title)}\n  sub: ${qs(w.sub)}\n  stage: ${qs(w.stage)}\n`;
-      y+=`  spine:\n    label: ${qs(sp.label)}\n    w: ${sp.w}\n    h: ${sp.h}\n    color: ${qs(sp.color)}\n`;
+      y+=`  spine:\n    label: ${qs(sp.label)}\n`
+         +(sp.byline?`    byline: ${qs(sp.byline)}\n`:'')
+         +`    w: ${sp.w}\n    h: ${sp.h}\n    color: ${qs(sp.color)}\n`;
       y+=`  cells: ${w.cells?qs(w.cells):'~'}\n`;
       y+=blk('cite',w.cite,'  ')+blk('key',w.key,'  ')+blk('blurb',w.blurb,'  ')+blk('next',w.next,'  ');
       y+=`  links:\n`;
@@ -219,7 +252,7 @@ $('#dlN').addEventListener('click',()=>{dl('notes.yaml',notesYAML());$('#expOk')
 
 /* ---------- 起手 ---------- */
 // 给 Hugo 渲染出来的静态节点接上事件；没有 JS 的读者看到的仍是完整的只读页面。
-document.querySelectorAll('#shelfRow .spine,#drawerRow .spine').forEach(b=>{
+document.querySelectorAll('#shelfRow .spine,#shelfRow .pouch,#drawerRow .spine,#drawerRow .pouch').forEach(b=>{
   const w=works.find(x=>x.id===b.dataset.id); if(w)wireSpine(b,w);
 });
 document.querySelectorAll('#notes .note').forEach(d=>{

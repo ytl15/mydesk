@@ -46,26 +46,70 @@ header.mast{padding:4rem 0 2rem;border-bottom:1px solid var(--line-2)}
 .shelf{display:flex;align-items:flex-end;gap:.5rem;flex-wrap:wrap;min-height:12.4rem;padding:1.4rem .9rem 0;border-radius:3px;transition:background .15s,box-shadow .15s}
 .shelf.drop{background:rgba(109,91,151,.09);box-shadow:inset 0 0 0 2px rgba(109,91,151,.4)}
 .spine{
-  display:block;cursor:pointer;position:relative;border:none;
-  writing-mode:vertical-rl;white-space:nowrap;overflow:hidden;
-  width:var(--w,2.8rem);height:var(--h,12rem);
-  border-radius:2px 3px 3px 2px;padding:1.05rem 0;
-  font-family:var(--serif);font-size:.95rem;letter-spacing:.14em;line-height:var(--w,2.8rem);
-  color:#f5efe2;background:var(--c,#37455e);
+  display:block;cursor:pointer;position:relative;border:none;text-decoration:none;overflow:hidden;
+  --aw:.68rem;--trim:.3rem;--sw:calc(var(--w,2.8rem) - var(--trim));
+  width:var(--sw);height:var(--h,12rem);
+  border-radius:2px 3px 3px 2px;background:var(--c,#37455e);color:#f5efe2;
   box-shadow:inset -3px 0 0 rgba(255,255,255,.09), inset 3px 0 0 rgba(0,0,0,.16), 2px -2px 5px rgba(90,76,50,.24);
   transition:transform .18s,box-shadow .18s;
 }
-.spine::after{content:"";position:absolute;inset:.45rem .18rem;border:1px solid rgba(245,239,226,.28);border-radius:1px}
+/* 右边一列：书名。竖排模式下 line-height 控制的是列宽，用它把字横向居中 */
+.spine>.st{
+  position:absolute;top:0;bottom:0;right:0;left:var(--aw);
+  writing-mode:vertical-rl;white-space:nowrap;overflow:hidden;padding:1.05rem 0;
+  font-family:var(--serif);font-size:.95rem;letter-spacing:.14em;
+  line-height:calc(var(--sw) - var(--aw));
+  color:inherit;
+}
+/* 左边一窄列：作者原名，或「论文集」。靠下端对齐，像精装书脊下方那行小字 */
+.spine>.sa{
+  position:absolute;top:0;bottom:0;left:0;width:var(--aw);
+  writing-mode:vertical-rl;white-space:nowrap;overflow:hidden;padding:1.5rem 0;text-align:end;
+  font-family:var(--sans);font-size:.58rem;letter-spacing:.04em;line-height:var(--aw);
+  color:rgba(245,239,226,.6);
+}
+.spine::after{content:"";position:absolute;inset:.45rem .18rem;border:1px solid rgba(245,239,226,.28);border-radius:1px;pointer-events:none}
 .spine:hover,.spine:focus-visible{transform:translateY(-.7rem);outline:none;box-shadow:inset -3px 0 0 rgba(255,255,255,.09),inset 3px 0 0 rgba(0,0,0,.16),3px -6px 12px rgba(90,76,50,.34)}
 /* 虚体：同样是书架上的一格，只是没做成实体书 */
-.spine.ghost{
-  background:transparent;color:rgba(120,106,80,.66);
-  border:1px dashed rgba(150,134,104,.55);border-bottom:none;border-radius:2px 2px 0 0;
-  box-shadow:none;font-size:.78rem;letter-spacing:.12em;
-}
+.spine.ghost{background:transparent;color:rgba(120,106,80,.66);
+  border:1px dashed rgba(150,134,104,.55);border-bottom:none;border-radius:2px 2px 0 0;box-shadow:none}
+.spine.ghost>.st{font-size:.78rem;letter-spacing:.12em;line-height:calc(var(--sw) - var(--aw) - 2px)}
+.spine.ghost>.sa{color:rgba(120,106,80,.5)}
 .spine.ghost::after{display:none}
 .spine.ghost:hover{transform:translateY(-.35rem);box-shadow:none;color:rgba(100,88,64,.9)}
 .spine.ondesk{border-style:dotted}
+
+/* 文件袋：不是书的东西（单篇、散稿）立在架上的样子 */
+.pouch{
+  display:block;position:relative;cursor:pointer;border:none;text-decoration:none;text-align:left;
+  flex:0 0 auto;width:5.9rem;height:var(--ph,9.8rem);border-radius:2px 2px 3px 3px;color:#6f6247;
+  background:
+    repeating-linear-gradient(97deg, rgba(120,96,58,.05) 0 3px, transparent 3px 7px),
+    linear-gradient(178deg,#d8c199 0%,#c9ae7e 58%,#bda06f 100%);
+  box-shadow:inset 0 0 0 1px rgba(120,96,58,.3), inset -3px 0 0 rgba(255,255,255,.13), 2px -2px 5px rgba(90,76,50,.24);
+  transition:transform .18s,box-shadow .18s;
+}
+.pouch:hover,.pouch:focus-visible{transform:translateY(-.7rem);outline:none;box-shadow:inset 0 0 0 1px rgba(120,96,58,.3),inset -3px 0 0 rgba(255,255,255,.13),3px -6px 12px rgba(90,76,50,.34)}
+.pouch .pflap{position:absolute;left:0;right:0;top:0;height:2.35rem;border-radius:2px 2px 0 0;
+  background:linear-gradient(178deg,#e2cda7,#d3b988);border-bottom:1px dashed rgba(110,88,52,.5)}
+.pouch .ptie{position:absolute;left:50%;bottom:-.4rem;width:.8rem;height:.8rem;margin-left:-.4rem;
+  border-radius:50%;background:radial-gradient(circle at 34% 30%,#a8865a,#775c34);
+  box-shadow:0 0 0 1px rgba(255,255,255,.35),0 1px 2px rgba(60,44,20,.4)}
+.pouch .ptie::before,.pouch .ptie::after{content:"";position:absolute;left:50%;top:50%;height:1px;background:rgba(96,74,42,.42)}
+.pouch .ptie::before{width:2.5rem;margin:0 0 0 -1.25rem;transform:rotate(-11deg)}
+.pouch .ptie::after{width:2rem;margin:0 0 0 -1rem;transform:rotate(8deg)}
+.pouch .plabel{position:absolute;left:.55rem;right:.55rem;top:3rem;bottom:2.5rem;overflow:hidden;
+  padding:.45rem .45rem;border:1px solid rgba(120,96,58,.3);border-radius:1px;
+  background:rgba(250,247,241,.92);box-shadow:0 1px 2px rgba(90,76,50,.12)}
+.pouch .pt{display:block;font-family:var(--serif);font-size:.76rem;line-height:1.5;color:#463d2e}
+.pouch .pby{position:absolute;left:.42rem;right:.42rem;bottom:1.35rem;text-align:center;
+  font-family:var(--sans);font-size:.5rem;letter-spacing:0;line-height:1.4;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:rgba(88,70,42,.8)}
+.pouch .pkind{position:absolute;right:.6rem;bottom:.3rem;font-family:var(--serif);font-size:.62rem;
+  letter-spacing:.08em;line-height:1.5;padding:0 .24rem;color:var(--pc,#6d5b97);
+  border:1px solid currentColor;border-radius:2px;opacity:.72}
+.drawer .pouch{opacity:.72;filter:saturate(.55)}
+.drawer .pouch:hover{opacity:1;filter:none}
 .board{height:.45rem;background:linear-gradient(180deg,#cbbb9b,#a8926c);border-radius:2px;box-shadow:0 4px 10px -4px rgba(90,76,50,.45)}
 
 .drawer{margin:.55rem 0 0}
@@ -204,8 +248,15 @@ footer.note-foot b{color:var(--violet-d)}
   header.mast{padding:2.6rem 0 1.6rem}
   .sitename{font-size:1.8rem}
   .shelf{gap:.35rem;padding:1rem .2rem 0;min-height:10rem}
-  .spine{width:2.3rem !important;height:9.4rem !important;font-size:.8rem;line-height:2.3rem !important;letter-spacing:.05em;padding:.7rem 0}
-  .spine.ghost{font-size:.67rem}
+  .spine{--aw:.6rem;--sw:2.5rem;height:9.4rem !important}
+  .spine>.st{font-size:.8rem;letter-spacing:.05em;padding:.7rem 0}
+  .spine>.sa{font-size:.5rem;padding:1rem 0}
+  .spine.ghost>.st{font-size:.67rem}
+  .pouch{width:5.1rem;height:8.8rem !important}
+  .pouch .pflap{height:2rem}
+  .pouch .plabel{top:2.6rem;bottom:2.3rem;padding:.35rem .35rem}
+  .pouch .pt{font-size:.7rem}
+  .pouch .pby{font-size:.44rem;bottom:1.2rem;left:.28rem;right:.28rem}
   .papers{grid-template-columns:1fr}
   .note,.addnote{width:calc(50% - .35rem)}
   #tip{max-width:calc(100vw - 2rem)}

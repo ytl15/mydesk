@@ -1,0 +1,16 @@
+{{- /* 文件袋。不是书的东西——单篇文章、一叠散稿——立在书架上是个牛皮纸袋，
+       不是书脊。形式即状态：一眼看得出它不是一本书。 */ -}}
+{{- $w := .w -}}
+{{- $sp := $w.spine -}}
+{{- $href := "" -}}
+{{- with where $w.links "primary" true -}}{{ $href = (index . 0).href }}{{- end -}}
+{{- $kind := default "篇" $w.kindmark -}}
+{{- if $href -}}
+<a class="pouch" href="{{ $href | relURL }}"
+   data-id="{{ $w.id }}" data-tip="work" draggable="true" title="{{ $w.title }}"
+   style="--pc:{{ $sp.color }};--ph:{{ $sp.h }}rem"><span class="pflap"><i class="ptie"></i></span><span class="plabel"><span class="pt">{{ $sp.label }}</span></span>{{ with $sp.byline }}<span class="pby">{{ . }}</span>{{ end }}<span class="pkind">{{ $kind }}</span></a>
+{{- else -}}
+<button type="button" class="pouch"
+        data-id="{{ $w.id }}" data-tip="work" draggable="true" title="{{ $w.title }}"
+        style="--pc:{{ $sp.color }};--ph:{{ $sp.h }}rem"><span class="pflap"><i class="ptie"></i></span><span class="plabel"><span class="pt">{{ $sp.label }}</span></span>{{ with $sp.byline }}<span class="pby">{{ . }}</span>{{ end }}<span class="pkind">{{ $kind }}</span></button>
+{{- end -}}

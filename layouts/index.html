@@ -37,14 +37,16 @@
       </div>
     </header>
 
+    {{ $pouch := where $shelf "form" "pouch" }}
     <section class="zone">
       <div class="zonehead">
         <h2>书架</h2>
-        <span class="cnt" id="shelfCnt">书架上 {{ len $shelf }} 本 · 台面还有 {{ len $desk }} 件</span>
-        <p>做完的立起来成书，鼠标停上去看内容。</p>
+        <span class="cnt" id="shelfCnt">书架上 {{ sub (len $shelf) (len $pouch) }} 本{{ with len $pouch }} · {{ . }} 个文件袋{{ end }} · 台面还有 {{ len $desk }} 件</span>
+        <p>做完的立起来成书，不是书的（单篇、一叠散稿）是个文件袋；鼠标停上去看内容，点一下就读。</p>
       </div>
       <div class="shelf" id="shelfRow" data-zone="shelf">
-        {{ range $shelf }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}
+        {{ range $shelf }}{{ if eq (default "" .form) "pouch" }}{{ partial "pouch.html" (dict "w" .) }}{{ else }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}{{ end }}
+        {{/* 还在台面上的，在架上留一格虚线空位——不论它将来是书还是文件袋 */}}
         {{ range $desk }}{{ partial "spine.html" (dict "w" . "solid" false "ondesk" true) }}{{ end }}
       </div>
       <div class="board"></div>
@@ -56,7 +58,7 @@
         </button>
         <div class="drawerbody" id="drawerBody" data-zone="drawer">
           <div class="shelf" id="drawerRow" data-zone="drawer">
-            {{ if $drawer }}{{ range $drawer }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}
+            {{ if $drawer }}{{ range $drawer }}{{ if eq (default "" .form) "pouch" }}{{ partial "pouch.html" (dict "w" .) }}{{ else }}{{ partial "spine.html" (dict "w" . "solid" .solid "ondesk" false) }}{{ end }}{{ end }}
             {{ else }}<div class="emptyhint">空的。把台面或书架上暂时不打算做完的拖进来。</div>{{ end }}
           </div>
         </div>

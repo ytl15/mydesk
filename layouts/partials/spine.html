@@ -1,10 +1,21 @@
+{{- /* 书脊。右边一列是书名，左边一窄列小字是作者原名（论文集写「论文集」）。
+       整块是个链接，点开就是这部书的主链接；编辑模式下 JS 截住点击改弹菜单。
+       --w 是书名那一列的宽度，--aw 是小字那一列，书脊实宽是两者相加。 */ -}}
 {{- $w := .w -}}
 {{- $solid := .solid -}}
 {{- $ondesk := .ondesk -}}
 {{- $sp := $w.spine -}}
 {{- $width := cond $solid $sp.w (sub $sp.w 0.3) -}}
 {{- $height := cond $solid $sp.h (sub $sp.h 0.6) -}}
-<button type="button"
-        class="spine{{ if $solid }}{{ if $w.recension }} rec{{ end }}{{ else }} ghost{{ end }}{{ if $ondesk }} ondesk{{ end }}"
+{{- $href := "" -}}
+{{- with where $w.links "primary" true -}}{{ $href = (index . 0).href }}{{- end -}}
+{{- $class := print "spine" (cond $solid (cond (eq true $w.recension) " rec" "") " ghost") (cond $ondesk " ondesk" "") -}}
+{{- if $href -}}
+<a class="{{ $class }}" href="{{ $href | relURL }}"
+   data-id="{{ $w.id }}" data-tip="work" draggable="true" title="{{ $w.title }}"
+   style="--w:{{ $width }}rem;--h:{{ $height }}rem;{{ if $solid }}--c:{{ $sp.color }};{{ end }}"><span class="st">{{ $sp.label }}</span>{{ with $sp.byline }}<span class="sa">{{ . }}</span>{{ end }}</a>
+{{- else -}}
+<button type="button" class="{{ $class }}"
         data-id="{{ $w.id }}" data-tip="work" draggable="true" title="{{ $w.title }}"
-        style="--w:{{ $width }}rem;--h:{{ $height }}rem;{{ if $solid }}--c:{{ $sp.color }};{{ end }}">{{ $sp.label }}</button>
+        style="--w:{{ $width }}rem;--h:{{ $height }}rem;{{ if $solid }}--c:{{ $sp.color }};{{ end }}"><span class="st">{{ $sp.label }}</span>{{ with $sp.byline }}<span class="sa">{{ . }}</span>{{ end }}</button>
+{{- end -}}

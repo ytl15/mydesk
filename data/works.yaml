@@ -1,6 +1,8 @@
 # data/works.yaml —— 由「小书桌」页面导出。覆盖仓库中同名文件后重新构建。
 # place: shelf 书架 / drawer 归档抽屉 / desk 台面
 # solid: true 实体书脊 / false 虚体（书架上留一格空位）
+# form: pouch 文件袋（不是书的东西：单篇、一叠散稿）；不写就是书脊
+# spine.byline: 书脊侧面那列小字 —— 作者原名，或「论文集」
 # cells: 每字符一格 —— f 译毕、h 节译或残稿、e 未译；~ 表示不画进度格
 
 # ── 书架 ──
@@ -12,6 +14,7 @@
   stage: "2026 年 7 月 · 全书译毕"
   spine:
     label: "天宫图与公共领域"
+    byline: "论文集"
     w: 3.5
     h: 12.6
     color: "#37455e"
@@ -38,6 +41,7 @@
   stage: "2026 年 8 月 · 正文译毕"
   spine:
     label: "纵观土星"
+    byline: "Charles Obert"
     w: 3.0
     h: 11.8
     color: "#565061"
@@ -64,6 +68,7 @@
   stage: "2026 年 8 月 · 全书译毕"
   spine:
     label: "岁轮"
+    byline: "Charles Obert"
     w: 2.9
     h: 10.8
     color: "#8a6134"
@@ -90,6 +95,7 @@
   stage: "2026 年 7 月 · 全九章译毕"
   spine:
     label: "占星学的心理学化"
+    byline: "Laura Andrikopoulos"
     w: 2.5
     h: 11.4
     color: "#5d4a7e"
@@ -112,26 +118,31 @@
   place: desk
   solid: true
   title: "现代性的隐忧"
-  sub: "需要被挽救的本真理想 · 重译"
-  stage: "2026 年 8 月起"
+  sub: "需要被挽救的本真理想 · 中英对照重译加注版"
+  stage: "2026 年 9 月 · 第一章译毕"
   spine:
     label: "现代性的隐忧"
+    byline: "Charles Taylor"
     w: 2.7
     h: 9.8
     color: "#7a3b33"
-  cells: "feeeeeeeee"
+  cells: "fheeeeeeee"
   cite: >-
-    Charles Taylor，<i>The Malaise of Modernity</i>，House of Anansi Press, 1991（1991 年梅西讲座）· 全十章
+    Charles Taylor，<i>The Malaise of Modernity</i>，House of Anansi Press, 1991（1991 年 CBC 麦西讲座第三十辑）· 正文 122 页 · 全十章
   key: >-
-    格子按章号排列 · 已译<b>第一章「三个隐忧」</b>全章初稿（七个对照单元，分六页），其余九章未译
+    全书十章，格子按章号排列 · <b>第一章「三个隐忧」译毕</b>（英文底本 pp.1–12 · 25 个对照单元 · 48 条注释 · 术语 28 条 · 回填原书脚注 10 条）· 第二章「难以言明的争论」试译初稿在手（27／28 段），尚未加注，暂不上站 · 余下八章待译
   blurb: >-
-    泰勒把现代人的不安收进三条线索：个人主义带来的意义流失、工具理性的扩张、以及随之而来的政治自由的萎缩。他既不为现代性辩护也不唱衰，而是问：这些发展怎样才能被引向它最好的那一面。
+    泰勒把现代人的不安收进三条线索：个人主义带来的意义流失、工具理性的扩张、以及随之而来的政治自由的萎缩。他既不为现代性辩护也不唱衰，而是问：这些发展怎样才能被引向它最好的那一面。汉语已有程为译本，这一版不是精校而是重译，中文正文全部重出。
   next: >-
-    体例是英文原文与重译两栏并置，段下另附「译法说明」，交代每处取舍的理由。先把第一章的初稿复核定稿，再往下推第二章「未及言明的争论」。
+    中文为正文，英文底本与四类注释逐段折叠，全篇不用 JavaScript；术语一次定死、全书通用，已定的不改。接着复核第二章的试译稿、逐段加注，改到与第一章同一体例再上站。
   links:
-    - label: "阅读第一章"
-      href: "translation/malaise-ch1.html"
+    - label: "全书目录"
+      href: "translation/malaise-index.html"
       primary: true
+    - label: "第一章 · 三个隐忧"
+      href: "translation/malaise-ch1.html"
+    - label: "关键术语对照"
+      href: "translation/malaise-ch1.html#sec-gl"
 - id: tarot
   place: desk
   solid: true
@@ -141,6 +152,7 @@
   stage: "2026 年 8 月 · 已精校六封"
   spine:
     label: "塔罗冥想"
+    byline: "Valentin Tomberg"
     w: 3.2
     h: 11
     color: "#7a4a22"
@@ -170,6 +182,35 @@
     - label: "第十七封 · 星星"
       href: "translation/tarot/17-star.html"
 
+- id: cabala
+  place: shelf
+  solid: true
+  form: pouch
+  title: "占星诸宫的卡巴拉"
+  sub: "自拉丁直接译出 · 沃顿英译作《占星十二宫的卡巴拉》 · 1623／1661 两本对读"
+  stage: "2026 年 8 月 · 全篇译毕"
+  spine:
+    label: "占星诸宫的卡巴拉"
+    byline: "Jean-Baptiste Morin"
+    w: 2.6
+    h: 9.8
+    color: "#6d5b97"
+  cells: ~
+  cite: >-
+    Jean-Baptiste Morin，<i>Astrologicarum domorum cabala detecta</i>，巴黎：J. Moreau，1623，pp.3–38；同文改本见 <i>Astrologia Gallica</i>，Lib. XVII, Sect. I，海牙：A. Vlacq，1661，pp.384–390
+  key: >-
+    单篇文章，不是书，故不画进度格。<b>两本全文对读</b> · 57 个对照单元（两本皆有 35、文字有异 10、仅 1623 有 7、仅 1661 有 5）· 37 条注释（内校记 23 条）· <b>35 条术语契约</b>，承《纵观土星》—《岁轮》那份 155 条的旧约，一条不改，只做增补
+  blurb: >-
+    同一篇文章，莫兰前后写了两遍，中间隔了三十八年。1623 年那本薄册是四十岁的他从蒙彼利埃之围返回巴黎途中「揭出」的；1661 年的《高卢占星学》第十七卷第一节删去数论与布道口吻，添上经院式的第二重证明。沃顿 1683 年译入英文的是前一本——英语世界读到的是四十岁的莫兰，欧陆读到的是晚年的莫兰，两条线不同源。本版把两本并置，中译自拉丁直接出，不经沃顿英译。
+  next: >-
+    顶栏「只看差异」一键隐去两本相同的段落，剩下的就是莫兰三十八年间改动过的地方。另有一版走沃顿英译的四层对读加注稿，尚未上站；1661 年本末尾那章神学附论另篇独出。
+  links:
+    - label: "阅读全篇"
+      href: "translation/morin-cabala.html"
+      primary: true
+    - label: "术语契约表"
+      href: "translation/morin-cabala.html#sec-gl"
+
 # ── 归档抽屉 ──
 - id: reintegration
   place: drawer
@@ -179,6 +220,7 @@
   stage: "2026 年 5 月起 · 暂搁"
   spine:
     label: "诸存在重新融合论"
+    byline: "Martinès de Pasqually"
     w: 2.8
     h: 10.2
     color: "#4a5a44"
@@ -205,6 +247,7 @@
   stage: "2026 年 2–3 月 · 暂搁"
   spine:
     label: "行星之内"
+    byline: "Thomas Moore"
     w: 2.6
     h: 9.6
     color: "#5d4a7e"
@@ -235,6 +278,7 @@
   stage: "2026 年 7 月 · 暂搁"
   spine:
     label: "基督教与焦虑"
+    byline: "Oskar Pfister"
     w: 2.4
     h: 9
     color: "#6b5340"
