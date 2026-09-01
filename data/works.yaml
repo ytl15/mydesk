@@ -119,28 +119,30 @@
   solid: true
   title: "现代性的隐忧"
   sub: "需要被挽救的本真理想 · 中英对照重译加注版"
-  stage: "2026 年 9 月 · 第一章译毕"
+  stage: "2026 年 9 月 · 前两章译毕"
   spine:
     label: "现代性的隐忧"
     byline: "Charles Taylor"
     w: 2.7
     h: 9.8
     color: "#7a3b33"
-  cells: "fheeeeeeee"
+  cells: "ffeeeeeeee"
   cite: >-
     Charles Taylor，<i>The Malaise of Modernity</i>，House of Anansi Press, 1991（1991 年 CBC 麦西讲座第三十辑）· 正文 122 页 · 全十章
   key: >-
-    全书十章，格子按章号排列 · <b>第一章「三个隐忧」译毕</b>（英文底本 pp.1–12 · 25 个对照单元 · 48 条注释 · 术语 28 条 · 回填原书脚注 10 条）· 第二章「难以言明的争论」试译初稿在手（27／28 段），尚未加注，暂不上站 · 余下八章待译
+    全书十章，格子按章号排列 · <b>第一章「三个隐忧」译毕并加注</b>（英文底本 pp.1–12 · 25 个对照单元 · 48 条注释 · 术语 28 条 · 回填原书脚注 10 条）· <b>第二章「说不清的争论」重译毕</b>（pp.13–24 · 27 个对照单元 · 中英两栏对照，注释待补）· 余下八章待译
   blurb: >-
     泰勒把现代人的不安收进三条线索：个人主义带来的意义流失、工具理性的扩张、以及随之而来的政治自由的萎缩。他既不为现代性辩护也不唱衰，而是问：这些发展怎样才能被引向它最好的那一面。汉语已有程为译本，这一版不是精校而是重译，中文正文全部重出。
   next: >-
-    中文为正文，英文底本与四类注释逐段折叠，全篇不用 JavaScript；术语一次定死、全书通用，已定的不改。接着复核第二章的试译稿、逐段加注，改到与第一章同一体例再上站。
+    先给第二章逐段加注、回填原书脚注，改到与第一章同一体例；再往下推第三章「本真性之源」。术语一次定死、全书通用，已定的不改。
   links:
     - label: "全书目录"
       href: "translation/malaise-index.html"
       primary: true
     - label: "第一章 · 三个隐忧"
       href: "translation/malaise-ch1.html"
+    - label: "第二章 · 说不清的争论"
+      href: "translation/malaise-ch2.html"
     - label: "关键术语对照"
       href: "translation/malaise-ch1.html#sec-gl"
 - id: tarot
